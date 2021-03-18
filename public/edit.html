@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Twitter Manage App</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h2>Let's make your processing!</h2>
+      <h1>処理一覧</h1>
+      <form method="post" class="form" id="create-form">
+        <ul class="processing-form">
+          <li>
+            <label for="functionName">処理の名前：</label>
+            <input
+              type="text"
+              name="functionName"
+              id="functionName"
+              placeholder="処理の名前を入力..."
+            />
+          </li>
+          <li>
+            <fieldset>
+              <legend>起動有無</legend>
+              <label><input type="radio" name="switch" value="ON" />ON</label>
+              <label>
+                <input type="radio" name="switch" checked value="OFF" />OFF
+              </label>
+            </fieldset>
+          </li>
+          <li>
+            <fieldset>
+              <legend>処理の種類</legend>
+              <label>
+                <input
+                  type="radio"
+                  name="processingType"
+                  value="post"
+                  checked
+                />投稿
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="processingType"
+                  value="favorite"
+                />いいね
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="processingType"
+                  value="reply"
+                />リプライ
+              </label>
+            </fieldset>
+          </li>
+
+          <li>
+            <label for="startTime">処理の開始時間：</label>
+            <input type="time" id="startTime" name="startTime" />
+          </li>
+
+          <li>
+            <label for="tweet">
+              <span class="textareaLabel">投稿内容：</span>
+              <textarea
+                name="tweet"
+                id="tweet"
+                cols="30"
+                rows="10"
+                placeholder="ツイート内容を入力..."
+              ></textarea>
+            </label>
+          </li>
+        </ul>
+      </form>
+
+      <div class="button-container">
+        <button formaction="#" id="submit">追加</button>
+        <a href="./admin.html" class="button">
+          <button>管理画面へ戻る</button>
+        </a>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/edit.js"></script>
+  </body>
+</html>
