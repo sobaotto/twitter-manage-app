@@ -28,6 +28,10 @@ th {
   justify-content: flex-end;
 }
 
+button#delete {
+  background: rgba(244, 78, 172, 0.84);
+}
+
 button {
   margin: 10px 0;
   display: inline-block;

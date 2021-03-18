@@ -10,7 +10,7 @@
     <div id="container">
       <h2>Let's make your processing!</h2>
       <h1>｜処理の内容変更</h1>
-      <form method="post" class="form" id="create-form">
+      <form method="post" class="form" id="edit-form">
         <ul class="processing-form">
           <li>
             <label for="editTarget"
@@ -19,7 +19,7 @@
             </label>
           </li>
           <li>
-            <label for="functionName">処理の名前：</label>
+            <label for="functionName">変更後の処理名：</label>
             <input
               type="text"
               name="functionName"
@@ -32,7 +32,7 @@
               <legend>起動有無</legend>
               <label><input type="radio" name="switch" value="ON" />ON</label>
               <label>
-                <input type="radio" name="switch" checked value="OFF" />OFF
+                <input type="radio" name="switch" value="OFF" />OFF
               </label>
             </fieldset>
           </li>
@@ -40,12 +40,7 @@
             <fieldset>
               <legend>処理の種類</legend>
               <label>
-                <input
-                  type="radio"
-                  name="processingType"
-                  value="post"
-                  checked
-                />投稿
+                <input type="radio" name="processingType" value="post" />投稿
               </label>
               <label>
                 <input
@@ -86,6 +81,7 @@
 
       <div class="button-container">
         <button formaction="#" id="submit">更新する</button>
+        <button formaction="#" id="delete">削除する</button>
         <a href="./admin.html" class="button">
           <button>管理画面へ戻る</button>
         </a>

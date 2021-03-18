@@ -6,22 +6,17 @@ const collection = db.collection("functions");
 
 const submitButton = document.getElementById("submit");
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click", async () => {
   const form = document.getElementById("create-form");
-  // 処理の有無を取得
-  const switchRef = form.switch;
-  const _switch = switchRef.value;
-
-  // 処理の種類を取得
-  const processingTypeRef = form.processingType;
-  const processingType = processingTypeRef.value;
-
+  // フォームの入力内容を取得
+  const _switch = form.switch.value;
+  const processingType = form.processingType.value;
   const tweet = form.tweet.value;
   const startTime = form.startTime.value;
   const functionName = form.functionName.value;
 
   try {
-    collection.add({
+    await collection.add({
       functionName: functionName,
       tweet: tweet,
       startTime: startTime,
@@ -31,9 +26,8 @@ submitButton.addEventListener("click", () => {
       updatedAt: new Date(),
     });
 
-    form.tweet.value = "";
-    form.startTime.value = "";
-    form.tweet.focus();
+    alert("追加作業が完了しました。\n管理画面に戻ります。");
+    location.replace("../admin.html");
   } catch (error) {
     console.log("add error");
   }
