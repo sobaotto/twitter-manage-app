@@ -9,9 +9,15 @@
   <body>
     <div id="container">
       <h2>Let's make your processing!</h2>
-      <h1>処理一覧</h1>
+      <h1>｜処理の内容変更</h1>
       <form method="post" class="form" id="create-form">
         <ul class="processing-form">
+          <li>
+            <label for="editTarget"
+              >編集する項目：
+              <select id="editTarget"></select>
+            </label>
+          </li>
           <li>
             <label for="functionName">処理の名前：</label>
             <input
@@ -79,7 +85,7 @@
       </form>
 
       <div class="button-container">
-        <button formaction="#" id="submit">追加</button>
+        <button formaction="#" id="submit">更新する</button>
         <a href="./admin.html" class="button">
           <button>管理画面へ戻る</button>
         </a>

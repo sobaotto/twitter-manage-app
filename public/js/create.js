@@ -28,6 +28,7 @@ submitButton.addEventListener("click", () => {
       processingType: processingType,
       switch: _switch,
       createdAt: new Date(),
+      updatedAt: new Date(),
     });
 
     form.tweet.value = "";
