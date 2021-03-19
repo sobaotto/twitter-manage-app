@@ -8,7 +8,7 @@ const submitButton = document.getElementById("submit");
 
 submitButton.addEventListener("click", async () => {
   const form = document.getElementById("create-form");
-  // フォームの入力内容を取得
+  // フォームの入力内容を取得する。
   const _switch = form.switch.value;
   const processingType = form.processingType.value;
   const tweet = form.tweet.value;
