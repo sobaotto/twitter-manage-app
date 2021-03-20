@@ -1,5 +1,7 @@
 "use script";
 
+import getFormValue from "./edit/getFormValue.js";
+
 const db = firebase.firestore();
 
 const collection = db.collection("functions");
@@ -7,21 +9,12 @@ const collection = db.collection("functions");
 const submitButton = document.getElementById("submit");
 
 submitButton.addEventListener("click", async () => {
-  const form = document.getElementById("create-form");
-  // フォームの入力内容を取得
-  const _switch = form.switch.value;
-  const processingType = form.processingType.value;
-  const tweet = form.tweet.value;
-  const startTime = form.startTime.value;
-  const functionName = form.functionName.value;
+  const formId = "create-form";
+  const formValue = getFormValue(formId);
 
   try {
     await collection.add({
-      functionName: functionName,
-      tweet: tweet,
-      startTime: startTime,
-      processingType: processingType,
-      switch: _switch,
+      ...formValue,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
