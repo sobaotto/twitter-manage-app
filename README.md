@@ -16,6 +16,6 @@
 
 ### できなかったこと
 - [ ] gitignoreに記入しているのに反映されない
-#### 試したこと
+- 試したこと
 「git rm -r --cached .」
 https://qiita.com/fuwamaki/items/3ed021163e50beab7154
