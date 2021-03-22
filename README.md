@@ -10,6 +10,6 @@
 - [ ] webページの見栄え
 
 ### 調べること
-- [×] gitignoreの書き方理解
+- [x] gitignoreの書き方理解
 - [ ] ESLint導入（prettierと併用の設定）
-- [ ] jsファイルの隠し方
+- [x] jsファイルの隠し方
