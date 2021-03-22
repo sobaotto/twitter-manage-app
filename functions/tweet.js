@@ -1,5 +1,5 @@
 const Twitter = require("twitter");
-const oAuth = require("./keys");
+const oAuth = require("./authKeys");
 
 const tweet = (postContent) => {
   const client = new Twitter({ ...oAuth });

@@ -64,3 +64,9 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+public/js/config.js
+
+functions/serviceAccountKey.json
+
+functions/authKeys.js
