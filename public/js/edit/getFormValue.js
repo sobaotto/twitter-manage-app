@@ -12,12 +12,11 @@ const getFormValue = (formId) => {
   };
 
   // フォームに空白があれば取得
-  const blankValue = Object.values(formValue).find((value) => {
-    value === "";
-  });
-  if (blankValue === undefined) {
+  const blankValue = Object.values(formValue).find((value) => value === "");
+
+  if (blankValue === "") {
     alert("空の項目があると追加できません。");
-    return;
+    return false;
   } else {
     return formValue;
   }

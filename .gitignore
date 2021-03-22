@@ -70,3 +70,5 @@ public/js/config.js
 functions/serviceAccountKey.json
 
 functions/authKeys.js
+
+.vscode/
