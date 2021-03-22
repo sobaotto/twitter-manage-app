@@ -53,6 +53,7 @@ submitButton.addEventListener("click", async () => {
   const startTime = form.startTime.value;
   const functionName = form.functionName.value;
 
+  // 更新する
   try {
     await collection.doc(editingFunctionId).update({
       functionName: functionName,
