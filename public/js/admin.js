@@ -2,7 +2,7 @@
 
 const db = firebase.firestore();
 
-const collection = db.collection("functions");
+const collection = db.collection("processing");
 
 const table = document.querySelector("table");
 
@@ -15,23 +15,23 @@ collection
 
     // 管理画面に設定した処理一覧を表示する
     snapshot.forEach((doc) => {
-      const functionTr = document.createElement("tr");
-      const functionNumberTd = document.createElement("td");
-      const functionNameTd = document.createElement("td");
+      const processingTr = document.createElement("tr");
+      const processingNumberTd = document.createElement("td");
+      const processingNameTd = document.createElement("td");
       const switchTd = document.createElement("td");
 
       Number++;
 
-      functionNumberTd.textContent = Number;
-      functionNumberTd.classList.add("text-center");
-      functionTr.appendChild(functionNumberTd);
+      processingNumberTd.textContent = Number;
+      processingNumberTd.classList.add("text-center");
+      processingTr.appendChild(processingNumberTd);
 
-      functionNameTd.textContent = doc.data().functionName;
-      functionTr.appendChild(functionNameTd);
+      processingNameTd.textContent = doc.data().processingName;
+      processingTr.appendChild(processingNameTd);
 
       switchTd.textContent = doc.data().switch;
-      functionTr.appendChild(switchTd);
+      processingTr.appendChild(switchTd);
 
-      table.appendChild(functionTr);
+      table.appendChild(processingTr);
     });
   });

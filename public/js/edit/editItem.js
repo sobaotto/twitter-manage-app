@@ -3,12 +3,12 @@
 const editItem = async () => {
   // firestoreの初期化
   const db = firebase.firestore();
-  const collection = db.collection("functions");
+  const collection = db.collection("processing");
 
   const editTarget = document.getElementById("editTarget");
 
   // 処理名と処理のdoc.idを格納する
-  const functions = [];
+  const processings = [];
 
   // データベースから処理名を取得し、プルダウンで表示
   await collection
@@ -16,20 +16,20 @@ const editItem = async () => {
     .get()
     .then((snapshot) => {
       snapshot.forEach((doc) => {
-        const functionData = {
+        const processingData = {
           id: doc.id,
-          functionName: doc.data().functionName,
+          processingName: doc.data().processingName,
         };
 
-        const functionNameOption = document.createElement("option");
+        const processingNameOption = document.createElement("option");
 
-        functionNameOption.textContent = functionData.functionName;
-        editTarget.appendChild(functionNameOption);
+        processingNameOption.textContent = processingData.processingName;
+        editTarget.appendChild(processingNameOption);
 
-        functions.push(functionData);
+        processings.push(processingData);
       });
     });
-  return functions;
+  return processings;
 };
 
 export default editItem;

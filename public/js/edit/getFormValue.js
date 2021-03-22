@@ -4,7 +4,7 @@ const getFormValue = (formId) => {
   const form = document.getElementById(`${formId}`);
   // フォームの入力内容を取得
   const formValue = {
-    functionName: form.functionName.value.trim(),
+    processingName: form.processingName.value.trim(),
     tweet: form.tweet.value.trim(),
     startTime: form.startTime.value.trim(),
     processingType: form.processingType.value.trim(),

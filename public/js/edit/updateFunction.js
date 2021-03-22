@@ -1,6 +1,6 @@
 "use script";
 
-import getEditingFunctionId from "./getEditingFunctionId.js";
+import getEditingProcessingId from "./getEditingProcessingId.js";
 import getFormValue from "./getFormValue.js";
 
 const updateFunction = (editItem) => {
@@ -9,7 +9,7 @@ const updateFunction = (editItem) => {
 
   // 更新ボタンを押した時の挙動
   submitButton.addEventListener("click", async () => {
-    const editingFunctionId = getEditingFunctionId(editItem);
+    const editingProcessingId = getEditingProcessingId(editItem);
 
     const formId = "edit-form";
     const formValue = getFormValue(formId);
@@ -20,8 +20,8 @@ const updateFunction = (editItem) => {
     } else {
       try {
         await db
-          .collection("functions")
-          .doc(editingFunctionId)
+          .collection("processing")
+          .doc(editingProcessingId)
           .update({
             ...formValue,
             updatedAt: new Date(),

@@ -4,7 +4,7 @@ import getFormValue from "./edit/getFormValue.js";
 
 const db = firebase.firestore();
 
-const collection = db.collection("functions");
+const collection = db.collection("processing");
 
 const submitButton = document.getElementById("submit");
 

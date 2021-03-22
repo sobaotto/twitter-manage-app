@@ -9,12 +9,12 @@ const postFunction = async () => {
 
   const db = admin.firestore();
 
-  const functionData = [];
+  const processingData = [];
 
-  const querySnapshot = await db.collection("functions").get();
+  const querySnapshot = await db.collection("processing").get();
   try {
     querySnapshot.forEach((doc) => {
-      functionData.push({
+      processingData.push({
         id: doc.id,
         ...doc.data(),
       });
@@ -23,7 +23,7 @@ const postFunction = async () => {
     console.log(error);
   }
 
-  functionData.forEach((data) => {
+  processingData.forEach((data) => {
     if (data.switch === "ON") {
       // tweet();の自作モジュールでツイートできる。
       console.log(data.tweet);
