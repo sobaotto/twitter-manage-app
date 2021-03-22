@@ -10,10 +10,10 @@ collection
   .orderBy("updatedAt", "desc")
   .get()
   .then((snapshot) => {
-    // forEachでindexを第二引数に指定すると「undefined」になってしまう。2021/03/17
 
     let Number = 0;
 
+    // 管理画面に設定した処理一覧を表示する
     snapshot.forEach((doc) => {
       const functionTr = document.createElement("tr");
       const functionNumberTd = document.createElement("td");
