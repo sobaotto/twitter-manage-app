@@ -11,5 +11,5 @@
 
 ### 調べること
 - [x] gitignoreの書き方理解
-- [] ESLint導入（prettierと併用の設定）
+- [x] ESLint導入（prettierと併用の設定）
 - [x] jsファイルの隠し方
