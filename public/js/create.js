@@ -4,8 +4,6 @@ import getFormValue from "./edit/getFormValue.js";
 
 const db = firebase.firestore();
 
-const collection = db.collection("processing");
-
 const submitButton = document.getElementById("submit");
 
 submitButton.addEventListener("click", async () => {
@@ -16,7 +14,7 @@ submitButton.addEventListener("click", async () => {
     return;
   } else {
     try {
-      await collection.add({
+      await db.collection("processing").add({
         ...formValue,
         createdAt: new Date(),
         updatedAt: new Date(),

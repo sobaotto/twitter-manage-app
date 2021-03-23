@@ -15,7 +15,7 @@ const getFormValue = (formId) => {
   const blankValue = Object.values(formValue).find((value) => value === "");
 
   if (blankValue === "") {
-    alert("空の項目があると追加できません。");
+    alert("空の項目があると更新できません。");
     return false;
   } else {
     return formValue;

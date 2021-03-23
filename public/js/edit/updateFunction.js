@@ -3,8 +3,7 @@
 import getEditingProcessingId from "./getEditingProcessingId.js";
 import getFormValue from "./getFormValue.js";
 
-const updateFunction = (editItem) => {
-  const db = firebase.firestore();
+const updateFunction = (db, editItem) => {
   const submitButton = document.getElementById("submit");
 
   // 更新ボタンを押した時の挙動

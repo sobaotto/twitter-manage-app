@@ -67,8 +67,6 @@ node_modules/
 
 public/js/config.js
 
-functions/serviceAccountKey.json
-
-functions/authKeys.js
+functions/keys/
 
 .vscode/

@@ -1,17 +1,14 @@
 "use script";
 
-const editItem = async () => {
-  // firestoreの初期化
-  const db = firebase.firestore();
-  const collection = db.collection("processing");
-
+const editItem = async (db) => {
   const editTarget = document.getElementById("editTarget");
 
   // 処理名と処理のdoc.idを格納する
   const processings = [];
 
   // データベースから処理名を取得し、プルダウンで表示
-  await collection
+  await db
+    .collection("processing")
     .orderBy("updatedAt", "desc")
     .get()
     .then((snapshot) => {
