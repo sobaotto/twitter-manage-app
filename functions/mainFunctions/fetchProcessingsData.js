@@ -1,8 +1,7 @@
-const fetchProcessingsData = async () => {
-  // 【質問】外部モジュールのimportは、自作関数の中に書くか、外に書くか？（2021/03/23）
-  const admin = require("firebase-admin");
-  const serviceAccount = require("../keys/serviceAccountKey.json");
+const admin = require("firebase-admin");
+const serviceAccount = require("../keys/serviceAccountKey.json");
 
+const fetchProcessingsData = async () => {
   if (!admin.apps.length) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),

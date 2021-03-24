@@ -1,8 +1,7 @@
-const scheduledPost = async (req) => {
-  // 【質問】外部モジュールのimportは、自作関数の中に書くか、外に書くか？（2021/03/23）
-  const tweet = require("../mainFunctions/tweet");
-  const executionCheck = require("./executionCheck");
+const tweet = require("../mainFunctions/tweet");
+const executionCheck = require("./executionCheck");
 
+const scheduledPost = async (req) => {
   const executionCheckedProcessingsData = await executionCheck(req);
 
   const result = {
@@ -11,9 +10,11 @@ const scheduledPost = async (req) => {
     error: [],
   };
 
-  await Promise.all(
+  Promise.all(
     executionCheckedProcessingsData.map(async (data) => {
-      if (data.execution) {
+      if (!data.execution) {
+        result.fail.push(data.processingName);
+      } else {
         await tweet(data.tweet)
           .then(() => {
             result.success.push(data.processingName);
@@ -21,8 +22,6 @@ const scheduledPost = async (req) => {
           .catch((error) => {
             result.error.push(data.processingName, error[0].message);
           });
-      } else {
-        result.fail.push(data.processingName);
       }
     })
   );
