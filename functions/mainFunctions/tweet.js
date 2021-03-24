@@ -4,14 +4,9 @@ const oAuth = require("../keys/authKeys.json");
 const tweet = async (postContent) => {
   const client = new Twitter(oAuth);
 
-  await client.post(
-    "statuses/update",
-    { status: postContent },
-    (error, tweet, response) => {
-      if (error) throw error;
-      console.log(tweet);
-    }
-  );
+  const result = await client.post("statuses/update", { status: postContent });
+
+  return result;
 };
 
 module.exports = tweet;

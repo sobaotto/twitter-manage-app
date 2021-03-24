@@ -11,19 +11,21 @@ const scheduledPost = async (req) => {
     error: [],
   };
 
-  await executionCheckedProcessingsData.forEach(async (data) => {
-    if (data.execution) {
-      await tweet(data.tweet)
-        .then(() => {
-          result.success.push(data.processingName);
-        })
-        .catch((error) => {
-          result.error.push(`${data.processingName}：${error}`);
-        });
-    } else {
-      result.fail.push(data.processingName);
-    }
-  });
+  await Promise.all(
+    executionCheckedProcessingsData.map(async (data) => {
+      if (data.execution) {
+        await tweet(data.tweet)
+          .then(() => {
+            result.success.push(data.processingName);
+          })
+          .catch((error) => {
+            result.error.push(data.processingName, error[0].message);
+          });
+      } else {
+        result.fail.push(data.processingName);
+      }
+    })
+  );
 
   return result;
 };
