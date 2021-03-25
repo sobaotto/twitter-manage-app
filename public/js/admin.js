@@ -2,7 +2,7 @@
 
 const db = firebase.firestore();
 
-const collection = db.collection("processing");
+const collection = db.collection("Processing");
 
 const table = document.querySelector("table");
 
@@ -10,7 +10,6 @@ collection
   .orderBy("updatedAt", "desc")
   .get()
   .then((snapshot) => {
-
     let Number = 0;
 
     // 管理画面に設定した処理一覧を表示する

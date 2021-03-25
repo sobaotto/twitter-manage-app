@@ -9,7 +9,7 @@ const deleteFunction = async (db, editItem) => {
   deleteButton.addEventListener("click", async () => {
     const editingProcessingId = getEditingProcessingId(editItem);
     await db
-      .collection("processing")
+      .collection("Processing")
       .doc(editingProcessingId)
       .delete()
       .then(() => {

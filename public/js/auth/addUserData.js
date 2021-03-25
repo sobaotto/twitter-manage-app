@@ -26,11 +26,13 @@ const addUserData = (formData, userData) => {
       });
 
       if (check) {
-        db.collection("User").add({
-          ...userData,
-          password: formData.password,
-          username: formData.username,
-        });
+        db.collection("User")
+          .doc(userData.uid)
+          .set({
+            ...userData,
+            password: formData.password,
+            username: formData.username,
+          });
       }
     });
 };

@@ -19,7 +19,7 @@ const updateFunction = (db, editItem) => {
     } else {
       try {
         await db
-          .collection("processing")
+          .collection("Processing")
           .doc(editingProcessingId)
           .update({
             ...formValue,

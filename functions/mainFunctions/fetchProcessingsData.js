@@ -13,7 +13,7 @@ const fetchProcessingsData = async () => {
   const processingsData = [];
 
   await db
-    .collection("processing")
+    .collection("Processing")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {

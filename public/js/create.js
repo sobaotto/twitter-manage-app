@@ -14,7 +14,7 @@ submitButton.addEventListener("click", async () => {
     return;
   } else {
     try {
-      await db.collection("processing").add({
+      await db.collection("Processing").add({
         ...formValue,
         createdAt: new Date(),
         updatedAt: new Date(),

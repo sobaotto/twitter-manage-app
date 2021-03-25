@@ -8,7 +8,7 @@ const editItem = async (db) => {
 
   // データベースから処理名を取得し、プルダウンで表示
   await db
-    .collection("processing")
+    .collection("Processing")
     .orderBy("updatedAt", "desc")
     .get()
     .then((snapshot) => {
