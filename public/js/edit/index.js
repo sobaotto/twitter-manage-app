@@ -5,13 +5,13 @@ import updateFunction from "./updateFunction.js";
 import editItem from "./editItem.js";
 import monitorLoginStatus from "../auth/monitorLoginStatus.js";
 
-const loginStatus = monitorLoginStatus();
+monitorLoginStatus().then(({ loginStatus, uid }) => {
+  if (loginStatus) {
+    const db = firebase.firestore();
 
-if (loginStatus) {
-  const db = firebase.firestore();
-
-  editItem(db).then((editItem) => {
-    updateFunction(db, editItem);
-    deleteFunction(db, editItem);
-  });
-}
+    editItem(db, uid).then((editItem) => {
+      updateFunction(db, editItem, uid);
+      deleteFunction(db, editItem, uid);
+    });
+  }
+});

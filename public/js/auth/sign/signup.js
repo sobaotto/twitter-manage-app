@@ -13,10 +13,11 @@ const twitterSignup = () => {
         createUserData(userData);
       })
       .then(() => {
-        const loginStatus = monitorLoginStatus();
-        if (loginStatus) {
-          location.replace("../../admin.html");
-        }
+        monitorLoginStatus().then((loginStatus) => {
+          if (loginStatus) {
+            // location.replace("../../admin.html");
+          }
+        });
       });
   });
 };

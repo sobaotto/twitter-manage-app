@@ -3,7 +3,7 @@
 import getEditingProcessingId from "./getEditingProcessingId.js";
 import getFormValue from "./getFormValue.js";
 
-const updateFunction = (db, editItem) => {
+const updateFunction = (db, editItem, uid) => {
   const submitButton = document.getElementById("submit");
 
   // 更新ボタンを押した時の挙動
@@ -19,6 +19,8 @@ const updateFunction = (db, editItem) => {
     } else {
       try {
         await db
+          .collection("User")
+          .doc(uid)
           .collection("Processing")
           .doc(editingProcessingId)
           .update({

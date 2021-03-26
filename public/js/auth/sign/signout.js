@@ -13,7 +13,7 @@ const twitterSignout = () => {
           console.log("Signout successful!");
         },
         (error) => {
-          console.log("Signout failed!");
+          console.error("Signout failed!", error);
         }
       );
   });
