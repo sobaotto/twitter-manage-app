@@ -21,7 +21,7 @@ const createUserData = (userData) => {
 
       if (!userRegistration) {
         db.collection("User")
-          .doc(userData.uid)
+          .doc(userData.screenName)
           .set({
             ...userData,
           })

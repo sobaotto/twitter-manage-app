@@ -1,8 +1,8 @@
 "use script";
 
-import twitterSignin from "./singin.js";
-import twitterSignout from "./singout.js.js";
-import twitterSignup from "./singup";
+import twitterSignin from "./sign/signin.js";
+import twitterSignout from "./sign/signout.js";
+import twitterSignup from "./sign/signup.js";
 
 // 「const auth = firebase.auth();」のインスタンスに関して
 // ①バケツリレーで関数に渡して行く方がいいか？
@@ -10,4 +10,4 @@ import twitterSignup from "./singup";
 
 twitterSignin();
 twitterSignup();
-twitterSignout();
+// twitterSignout();
