@@ -15,7 +15,7 @@ const twitterSignup = () => {
       .then(() => {
         monitorLoginStatus().then((loginStatus) => {
           if (loginStatus) {
-            // location.replace("../../admin.html");
+            location.replace("../../admin.html");
           }
         });
       });
