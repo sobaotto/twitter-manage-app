@@ -1,22 +1,15 @@
 "use strict";
 
-import addUserData from "./addUserData.js";
+import createUserData from "./createUserData.js";
 import twitterOAuth from "./twitterOAuth.js";
-import getFormValue from "./getFormValue.js";
 
 const twitterSignin = () => {
-  const singInButton = document.getElementById("sing-in");
+  const singInButton = document.getElementById("singn");
 
   singInButton.addEventListener("click", () => {
-    const formData = getFormValue();
-
-    if (formData) {
-      twitterOAuth().then((userData) => {
-        addUserData(formData, userData);
-      });
-    } else {
-      return;
-    }
+    twitterOAuth().then((userData) => {
+      createUserData(userData);
+    });
   });
 };
 

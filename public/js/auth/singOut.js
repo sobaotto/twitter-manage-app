@@ -1,7 +1,7 @@
 "use strict";
 
 const twitterSignout = () => {
-  const singOutButton = document.getElementById("sing-out");
+  const singOutButton = document.getElementById("singout");
 
   singOutButton.addEventListener("click", async () => {
     firebase

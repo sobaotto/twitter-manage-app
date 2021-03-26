@@ -10,11 +10,17 @@
       <h2>Welcome</h2>
       <h1>Twitter Manager</h1>
       <p>さぁ、Twitterのアカウントの管理を始めよう。</p>
+
       <div class="button-container">
-        <a href="./singup.html" class="button">
-          <button>始める</button>
-        </a>
+        <button id="singup">Twitterで登録</button>
+        <button id="singin">ログイン</button>
       </div>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/auth/index.js" type="module"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@
 
 const db = firebase.firestore();
 
-const addUserData = (formData, userData) => {
+const createUserData = (userData) => {
   const uids = [];
 
   db.collection("User")
@@ -17,24 +17,17 @@ const addUserData = (formData, userData) => {
       console.error("Error getting documents: ", error);
     })
     .then(() => {
-      let check = true;
+      const userRegistration = uids.includes(userData.uid);
 
-      uids.forEach((uid) => {
-        if (uid === userData.uid) {
-          check = false;
-        }
-      });
-
-      if (check) {
+      if (!userRegistration) {
         db.collection("User")
           .doc(userData.uid)
           .set({
             ...userData,
-            password: formData.password,
-            username: formData.username,
-          });
+          })
+          .catch((error) => console.error(error));
       }
     });
 };
 
-export default addUserData;
+export default createUserData;
