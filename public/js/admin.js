@@ -14,7 +14,7 @@ monitorLoginStatus().then(({ loginStatus, uid }) => {
       .orderBy("updatedAt", "desc")
       .get()
       .then((snapshot) => {
-        let Number = 0;
+        let number = 0;
 
         // 管理画面に設定した処理一覧を表示する
         snapshot.forEach((doc) => {
@@ -23,9 +23,9 @@ monitorLoginStatus().then(({ loginStatus, uid }) => {
           const processingNameTd = document.createElement("td");
           const switchTd = document.createElement("td");
 
-          Number++;
+          number++;
 
-          processingNumberTd.textContent = Number;
+          processingNumberTd.textContent = number;
           processingNumberTd.classList.add("text-center");
           processingTr.appendChild(processingNumberTd);
 
