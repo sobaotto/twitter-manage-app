@@ -1,11 +1,9 @@
 "use strict";
 
-const twitterOAuth = async () => {
+const twitterOAuth = () => {
   const provider = new firebase.auth.TwitterAuthProvider();
 
-  let userData = {};
-
-  await firebase
+  return firebase
     .auth()
     .signInWithPopup(provider)
     .then((result) => {
@@ -15,7 +13,7 @@ const twitterOAuth = async () => {
       const accessTokenSecret = result.credential.secret;
       const timestamp = new Date();
 
-      userData = {
+      const userData = {
         uid: uid,
         screenName: screenName,
         accessTokenKey: accessTokenKey,
@@ -23,13 +21,13 @@ const twitterOAuth = async () => {
         createdAt: timestamp,
         updatedAt: timestamp,
       };
+
+      return userData;
     })
     .catch((error) => {
       console.error(error.code);
       console.error(error.message);
     });
-
-  return userData;
 };
 
 export default twitterOAuth;

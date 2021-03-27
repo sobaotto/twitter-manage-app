@@ -7,15 +7,18 @@ import monitorLoginStatus from "../monitorLoginStatus.js";
 const twitterSignup = () => {
   const signUpButton = document.getElementById("signup");
 
+  // 【質問】なぜかアラートをOKにした後でないとfirestoreに書き込みされない。2021/03/27
   signUpButton.addEventListener("click", () => {
     twitterOAuth()
       .then((userData) => {
-        createUserData(userData);
+        return createUserData(userData);
       })
       .then(() => {
         monitorLoginStatus().then((loginStatus) => {
           if (loginStatus) {
-            location.replace("../../admin.html");
+            alert(
+              "登録が完了しました。\nログインボタンから管理画面に進んでください。"
+            );
           }
         });
       });

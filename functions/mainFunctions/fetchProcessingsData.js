@@ -12,7 +12,7 @@ const fetchProcessingsData = async () => {
 
   const processingsData = [];
 
-  await db
+  return db
     .collection("Processing")
     .get()
     .then((querySnapshot) => {
@@ -22,12 +22,12 @@ const fetchProcessingsData = async () => {
           ...doc.data(),
         });
       });
+      return processingsData;
     })
     .catch((error) => {
       result.error.push(error);
       console.log(error);
     });
-  return processingsData;
 };
 
 module.exports = fetchProcessingsData;

@@ -4,10 +4,19 @@ import twitterSignin from "./sign/signin.js";
 import twitterSignout from "./sign/signout.js";
 import twitterSignup from "./sign/signup.js";
 
-// 「const auth = firebase.auth();」のインスタンスに関して
-// ①バケツリレーで関数に渡して行く方がいいか？
-// ②各関数の中でそれぞれ呼び出した方がいいか？
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log(`userId:${user.uid}`);
 
-twitterSignin();
-twitterSignup();
-// twitterSignout();
+    const signUpButton = document.getElementById("signup");
+    signUpButton.classList.add("hidden");
+    const signOutButton = document.getElementById("signout");
+    signOutButton.classList.remove("hidden");
+
+    twitterSignout();
+    twitterSignin();
+  } else {
+    twitterSignin();
+    twitterSignup();
+  }
+});
