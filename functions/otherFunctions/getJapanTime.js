@@ -1,6 +1,12 @@
 const getJapanTime = () => {
+  const HOUR = 60;
+  const japanTimeDifference = 9;
+
   const date = new Date(
-    Date.now() + (new Date().getTimezoneOffset() + 9 * 60) * 60 * 1000
+    Date.now() +
+      (new Date().getTimezoneOffset() + japanTimeDifference * HOUR) *
+        HOUR *
+        1000
   );
 
   const JapanTime =

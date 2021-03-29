@@ -3,7 +3,7 @@
 import getEditingProcessingId from "./getEditingProcessingId.js";
 import getFormValue from "./getFormValue.js";
 
-const updateFunction = (db, editItem, uid) => {
+const updateFunction = (editItem, uid) => {
   const submitButton = document.getElementById("submit");
 
   // 更新ボタンを押した時の挙動
@@ -13,15 +13,20 @@ const updateFunction = (db, editItem, uid) => {
     const formId = "edit-form";
     const formValue = getFormValue(formId);
 
+    const db = firebase.firestore();
+
+    const USER = "User";
+    const PROCESSING = "Processing";
+
     console.log(formValue);
     if (formValue === false) {
       return;
     } else {
       try {
         await db
-          .collection("User")
+          .collection(USER)
           .doc(uid)
-          .collection("Processing")
+          .collection(PROCESSING)
           .doc(editingProcessingId)
           .update({
             ...formValue,

@@ -13,14 +13,16 @@ monitorLoginStatus().then(({ loginStatus, uid }) => {
       const formId = "create-form";
       const formValue = getFormValue(formId);
 
-      if (formValue === false) {
-        return;
-      } else {
+      //【質問】 この辺りで定数を宣言すればいいのか？もしくは、定数だけを集めたファイルを作って、exportして他のファイルでも使い回すのか？2021/03/29
+      const USER = "User";
+      const PROCESSING = "Processing";
+
+      if (formValue) {
         try {
           await db
-            .collection("User")
+            .collection(USER)
             .doc(uid)
-            .collection("Processing")
+            .collection(PROCESSING)
             .add({
               ...formValue,
               createdAt: new Date(),
@@ -32,6 +34,8 @@ monitorLoginStatus().then(({ loginStatus, uid }) => {
         } catch (error) {
           console.log("add error");
         }
+      } else {
+        return;
       }
     });
   }

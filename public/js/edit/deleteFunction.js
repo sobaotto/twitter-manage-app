@@ -2,16 +2,22 @@
 import getEditingProcessingId from "./getEditingProcessingId.js";
 
 // 削除ボタンを押した時の挙動
-const deleteFunction = async (db, editItem, uid) => {
+const deleteFunction = async (editItem, uid) => {
   // 削除ボタンの要素を取得
   const deleteButton = document.getElementById("delete");
 
   deleteButton.addEventListener("click", async () => {
     const editingProcessingId = getEditingProcessingId(editItem);
+
+    const db = firebase.firestore();
+
+    const USER = "User";
+    const PROCESSING = "Processing";
+
     await db
-      .collection("User")
+      .collection(USER)
       .doc(uid)
-      .collection("Processing")
+      .collection(PROCESSING)
       .doc(editingProcessingId)
       .delete()
       .then(() => {
