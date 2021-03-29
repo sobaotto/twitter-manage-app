@@ -1,4 +1,4 @@
-const tweet = require("../mainFunctions/tweet");
+const post = require("../execution/post");
 const executionCheck = require("./executionCheck");
 
 const scheduledPost = async (req) => {
@@ -15,7 +15,7 @@ const scheduledPost = async (req) => {
       if (!data.execution) {
         result.fail.push(data.processingName);
       } else {
-        await tweet(data.tweet)
+        await post(data.tweet)
           .then(() => {
             result.success.push(data.processingName);
           })

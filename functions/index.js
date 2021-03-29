@@ -1,17 +1,25 @@
 const functions = require("firebase-functions");
-const scheduledPost = require("./scheduledPost/scheduledPost");
+const executionProcessings = require("./execution/executionProcessings");
 
-exports.scheduledPost = functions
+exports.executionProcessings = functions
   .region("asia-northeast1")
   .pubsub.schedule("every 1 minutes")
   .onRun(async () => {
-    const result = await scheduledPost();
-    return result;
+    const executionLog = await executionProcessings();
+    return executionLog;
   });
 
-exports.scheduledPostTest = functions
-  .region("asia-northeast1")
-  .https.onRequest(async (req, res) => {
-    const result = await scheduledPost(req);
-    res.json(result);
-  });
+// exports.scheduledPost = functions
+//   .region("asia-northeast1")
+//   .pubsub.schedule("every 1 minutes")
+//   .onRun(async () => {
+//     const result = await scheduledPost();
+//     return result;
+//   });
+
+// exports.scheduledPostTest = functions
+//   .region("asia-northeast1")
+//   .https.onRequest(async (req, res) => {
+//     const result = await scheduledPost(req);
+//     res.json(result);
+//   });

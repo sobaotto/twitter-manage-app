@@ -1,5 +1,5 @@
 const getJapanTime = require("../otherFunctions/getJapanTime");
-const fetchProcessingsData = require("../mainFunctions/fetchProcessingsData");
+const fetchProcessingsData = require("../execution/fetchProcessingsData");
 
 const executionCheck = async (req) => {
   const JapanTime = getJapanTime();
