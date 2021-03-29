@@ -17,10 +17,14 @@ const twitterSignup = () => {
         monitorLoginStatus().then((loginStatus) => {
           if (loginStatus) {
             alert(
-              "登録が完了しました。\nログインボタンから管理画面に進んでください。"
+              "新規登録が完了しました。\n再度ログインボタンを押し、管理画面に進んでください。"
             );
           }
         });
+      })
+      .catch(() => {
+        alert("ログインに成功しました！");
+        location.replace("../../admin.html");
       });
   });
 };

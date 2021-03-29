@@ -1,6 +1,7 @@
 "use script";
 
 import monitorLoginStatus from "./auth/monitorLoginStatus.js";
+import twitterSignout from "./auth/sign/signout.js";
 
 monitorLoginStatus().then(({ loginStatus, uid }) => {
   if (loginStatus) {
@@ -40,3 +41,5 @@ monitorLoginStatus().then(({ loginStatus, uid }) => {
       });
   }
 });
+
+twitterSignout();

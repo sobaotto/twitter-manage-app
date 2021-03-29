@@ -20,12 +20,17 @@ const createUserData = (userData) => {
     .then(() => {
       const userRegistration = uids.includes(userData.uid);
 
-      if (!userRegistration) {
-        db.collection("User")
-          .doc(userData.uid)
-          .set(userData)
-          .catch((error) => console.error(error));
-      }
+      return new Promise((resolve, reject) => {
+        if (!userRegistration) {
+          db.collection("User")
+            .doc(userData.uid)
+            .set(userData)
+            .catch((error) => console.error(error));
+          resolve();
+        } else {
+          reject();
+        }
+      });
     });
 };
 
