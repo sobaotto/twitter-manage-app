@@ -1,7 +1,6 @@
 // 処理の種類を分岐させる関数
 
 // const favorite = require("./favorite");
-// const scheduledPost = require("./post/scheduledPost");
 // const reply = require("./reply");
 const post = require("./post/post");
 const getJapanTime = require("../otherFunctions/getJapanTime");
