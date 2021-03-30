@@ -18,6 +18,10 @@ const execution = async (twitterApiKey, processing) => {
   //     return;
   //   }
 
+  console.log(twitterApiKey);
+  console.log(processing);
+  console.log("\n\n\n\n\n\n\n");
+
   switch (processingType) {
     case "post":
       await post(twitterApiKey, postContent)

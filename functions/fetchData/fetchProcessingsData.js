@@ -14,19 +14,17 @@ const fetchProcessingsData = async (uid) => {
   const collections = await sfRef.listCollections();
   const processings = [];
 
-  return new Promise((resolve) => {
-    collections.forEach(async (collection) => {
-      const snapshot = await collection.get();
+  for (const collection of collections) {
+    const snapshot = await collection.get();
 
-      snapshot.forEach((doc) => {
-        processings.push({
-          id: doc.id,
-          ...doc.data(),
-        });
+    snapshot.forEach((doc) => {
+      processings.push({
+        id: doc.id,
+        ...doc.data(),
       });
-      resolve(processings);
     });
-  });
+  }
+  return processings;
 };
 
 module.exports = fetchProcessingsData;

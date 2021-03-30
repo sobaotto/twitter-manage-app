@@ -19,7 +19,7 @@ const fetchUsersData = () => {
     .collection(USER)
     .get()
     .then(async (querySnapshot) => {
-      for await (let doc of querySnapshot.docs) {
+      for (const doc of querySnapshot.docs) {
         const processings = await fetchProcessingsData(doc.id);
         usersData.push({
           userInfo: doc.data(),

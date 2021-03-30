@@ -13,8 +13,8 @@ const executionProcessings = async () => {
 
     const twitterApiKey = {
       ...authKeys,
-      access_token_key: "1301289140810469376-MUS41b8F8an6LMTAAQcn641yeOZRNK",
-      access_token_secret: "sFcNwj0KWsDPvQ2xqssHhwcAJNTiPQDHjLV2wNulQXJns",
+      access_token_key: accessTokenKey,
+      access_token_secret: accessTokenSecret,
     };
 
     const processings = userData["processings"];
