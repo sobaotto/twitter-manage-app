@@ -10,6 +10,9 @@ const executionProcessings = async () => {
   for (const userData of usersData) {
     const accessTokenKey = userData["userInfo"]["accessTokenKey"];
     const accessTokenSecret = userData["userInfo"]["accessTokenSecret"];
+    const screenName = userData["userInfo"]["screenName"];
+
+    console.log("screen_name : ", screenName);
 
     const twitterApiKey = {
       ...authKeys,
@@ -25,8 +28,8 @@ const executionProcessings = async () => {
   }
 };
 
-(async () => {
-  await executionProcessings();
-})();
+// (async () => {
+//   await executionProcessings();
+// })();
 
-// module.exports = executionProcessings;
+module.exports = executionProcessings;

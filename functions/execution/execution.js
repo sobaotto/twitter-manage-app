@@ -2,8 +2,8 @@
 
 // const favorite = require("./favorite");
 // const scheduledPost = require("./post/scheduledPost");
-const post = require("./post/post");
 // const reply = require("./reply");
+const post = require("./post/post");
 const getJapanTime = require("../otherFunctions/getJapanTime");
 
 const execution = async (twitterApiKey, processing) => {
@@ -14,20 +14,16 @@ const execution = async (twitterApiKey, processing) => {
   const onOff = processing["switch"];
   const postContent = processing["tweet"];
 
-  //   if (onOff === "OFF" || startTime !== japanTime) {
-  //     return;
-  //   }
+  if (onOff === "OFF" || startTime !== japanTime) {
+    return;
+  }
 
-  console.log(twitterApiKey);
   console.log(processing);
-  console.log("\n\n\n\n\n\n\n");
 
   switch (processingType) {
     case "post":
       await post(twitterApiKey, postContent)
-        .then((result) => {
-          console.log(result);
-        })
+        .then(() => {})
         .catch((e) => {
           console.error(e);
         });
