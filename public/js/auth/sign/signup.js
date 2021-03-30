@@ -23,7 +23,6 @@ const twitterSignup = () => {
         });
       })
       .catch(() => {
-        alert("ログインに成功しました！");
         location.replace("../../admin.html");
       });
   });

@@ -18,17 +18,15 @@ const fetchUsersData = () => {
   return db
     .collection(USER)
     .get()
-    .then((querySnapshot) => {
-      return new Promise(async (resolve) => {
-        querySnapshot.forEach(async (doc) => {
-          const processings = await fetchProcessingsData(doc.id);
-          usersData.push({
-            userInfo: doc.data(),
-            processings: processings,
-          });
-          resolve(usersData);
+    .then(async (querySnapshot) => {
+      for await (let doc of querySnapshot.docs) {
+        const processings = await fetchProcessingsData(doc.id);
+        usersData.push({
+          userInfo: doc.data(),
+          processings: processings,
         });
-      });
+      }
+      return usersData;
     })
     .catch((error) => {
       console.error(error);
