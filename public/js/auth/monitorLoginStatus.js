@@ -7,8 +7,7 @@ const monitorLoginStatus = () =>
         console.log("userId:", user.uid);
         resolve({ loginStatus: true, uid: user.uid });
       } else {
-        alert("お疲れ様でした！");
-        location.replace("../../index.html");
+        reject();
       }
     });
   });

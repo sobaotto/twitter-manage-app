@@ -25,8 +25,10 @@ const createUserData = (userData) => {
           db.collection("User")
             .doc(userData.uid)
             .set(userData)
-            .catch((error) => console.error(error));
-          resolve();
+            .catch((error) => console.error(error))
+            .then(() => {
+              resolve();
+            });
         } else {
           reject();
         }
