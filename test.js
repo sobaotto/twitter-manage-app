@@ -1,4 +1,4 @@
-const fetchUsersData = require("./functions/fetchData/fetchUsersData.js");
+const fetchUsersData = require("./functions/execution/executionProcessings.js");
 
 (async () => {
   const a = await fetchUsersData();
