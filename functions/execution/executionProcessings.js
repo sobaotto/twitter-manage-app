@@ -28,8 +28,8 @@ const executionProcessings = async () => {
   }
 };
 
-// (async () => {
-//   await executionProcessings();
-// })();
+(async () => {
+  await executionProcessings();
+})();
 
-module.exports = executionProcessings;
+// module.exports = executionProcessings;
