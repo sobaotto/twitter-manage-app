@@ -57,8 +57,16 @@
             <label for="startTime">処理の開始時間：</label>
             <input type="time" id="startTime" name="startTime" />
           </li>
+          <li class="hidden favorite reply form-type">
+            <label for="targetWord">キーワード：</label>
+            <input type="text" id="targetWord" name="targetWord" />
+          </li>
+          <li class="hidden favorite reply form-type">
+            <label for="maxCount">実行回数：</label>
+            <input type="number" id="maxCount" name="maxCount" />
+          </li>
 
-          <li>
+          <li class="reply post form-type">
             <label for="tweet">
               <span class="textareaLabel">投稿内容：</span>
               <textarea
@@ -85,6 +93,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
     <script src="./js/config.js"></script>
-    <script src="./js/create.js" type="module"></script>
+    <script src="./js/create/index.js" type="module"></script>
   </body>
 </html>

@@ -19,9 +19,7 @@ const updateFunction = (editItem, uid) => {
     const PROCESSING = "Processing";
 
     console.log(formValue);
-    if (formValue === false) {
-      return;
-    } else {
+    if (formValue) {
       try {
         await db
           .collection(USER)
