@@ -2,7 +2,7 @@
 
 import monitorLoginStatus from "../auth/monitorLoginStatus.js";
 import changeForm from "./changeForm.js";
-import createMethod from "./createMethod.js";
+import createFunction from "./createFunction.js";
 
 monitorLoginStatus()
   .then(({ loginStatus, uid }) => {
@@ -11,7 +11,7 @@ monitorLoginStatus()
       changeForm();
 
       // firestoreへの書き込み処理
-      createMethod(uid);
+      createFunction(uid);
     }
   })
   .catch(() => {

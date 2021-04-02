@@ -27,13 +27,15 @@ const getFormValue = (formId, selectedProcessing) => {
     },
   };
 
-  const selectedProcessingValue = Object.entries(uniqueValues).find(
-    (uniqueformValue) => uniqueformValue[0] === selectedProcessing
+  const selectedProcessingKeyValue = Object.entries(uniqueValues).find(
+    (uniqueFormKeyValue) => uniqueFormKeyValue[0] === selectedProcessing
   );
+
+  const selectedProcessingValue = selectedProcessingKeyValue[1];
 
   const formValue = {
     ...commonValue,
-    ...selectedProcessingValue[1],
+    ...selectedProcessingValue,
   };
   console.log("formValue", formValue);
 

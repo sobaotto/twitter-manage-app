@@ -11,7 +11,11 @@ const updateFunction = (editItem, uid) => {
     const editingProcessingId = getEditingProcessingId(editItem);
 
     const formId = "edit-form";
-    const formValue = getFormValue(formId);
+    const selectedElement = document.querySelector(
+      "input[name=processingType]:checked"
+    );
+
+    const formValue = getFormValue(formId, selectedElement.value);
 
     const db = firebase.firestore();
 

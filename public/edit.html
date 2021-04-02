@@ -40,7 +40,12 @@
             <fieldset>
               <legend>処理の種類</legend>
               <label>
-                <input type="radio" name="processingType" value="post" />投稿
+                <input
+                  type="radio"
+                  name="processingType"
+                  value="post"
+                  checked
+                />投稿
               </label>
               <label>
                 <input
@@ -63,8 +68,16 @@
             <label for="startTime">処理の開始時間：</label>
             <input type="time" id="startTime" name="startTime" />
           </li>
+          <li class="hidden favorite reply form-type">
+            <label for="targetWord">キーワード：</label>
+            <input type="text" id="targetWord" name="targetWord" />
+          </li>
+          <li class="hidden favorite reply form-type">
+            <label for="maxCount">実行回数：</label>
+            <input type="number" id="maxCount" name="maxCount" />
+          </li>
 
-          <li>
+          <li class="reply post form-type">
             <label for="tweet">
               <span class="textareaLabel">投稿内容：</span>
               <textarea

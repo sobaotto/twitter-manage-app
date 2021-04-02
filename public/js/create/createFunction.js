@@ -3,9 +3,7 @@
 import getFormValue from "../edit/getFormValue.js";
 
 // firestoreへの書き込み処理
-const createMethod = (uid) => {
-  const db = firebase.firestore();
-
+const createFunction = (uid) => {
   const submitButton = document.getElementById("submit");
 
   submitButton.addEventListener("click", async () => {
@@ -15,6 +13,8 @@ const createMethod = (uid) => {
     );
 
     const formValue = getFormValue(formId, selectedElement.value);
+
+    const db = firebase.firestore();
 
     //【質問】 この辺りで定数を宣言すればいいのか？もしくは、定数だけを集めたファイルを作って、exportして他のファイルでも使い回すのか？2021/03/29
     const USER = "User";
@@ -41,4 +41,4 @@ const createMethod = (uid) => {
   });
 };
 
-export default createMethod;
+export default createFunction;
