@@ -1,6 +1,6 @@
 "use script";
 
-const getFormValue = (formId, formType) => {
+const getFormValue = (formId, selectedProcessing) => {
   const form = document.getElementById(`${formId}`);
 
   // フォームの共通部分
@@ -12,49 +12,31 @@ const getFormValue = (formId, formType) => {
   };
 
   // 処理によって異なる項目
-  const reply = {
-    tweet: form.tweet.value.trim(),
-    maxCount: form.maxCount.value.trim(),
-    targetWord: form.targetWord.value.trim(),
+  const uniqueValues = {
+    reply: {
+      tweet: form.tweet.value.trim(),
+      maxCount: form.maxCount.value.trim(),
+      targetWord: form.targetWord.value.trim(),
+    },
+    favorite: {
+      maxCount: form.maxCount.value.trim(),
+      targetWord: form.targetWord.value.trim(),
+    },
+    post: {
+      tweet: form.tweet.value.trim(),
+    },
   };
-  const favorite = {
-    maxCount: form.maxCount.value.trim(),
-    targetWord: form.targetWord.value.trim(),
+
+  const selectedProcessingValue = Object.entries(uniqueValues).find(
+    (uniqueformValue) => uniqueformValue[0] === selectedProcessing
+  );
+
+  const formValue = {
+    ...commonValue,
+    ...selectedProcessingValue[1],
   };
-  const post = {
-    tweet: form.tweet.value.trim(),
-  };
+  console.log("formValue", formValue);
 
-  let formValue = {};
-
-  console.log(formType);
-
-  switch (formType) {
-    case "post":
-      formValue = {
-        ...commonValue,
-        ...post,
-      };
-      console.log("post;", formValue);
-
-      break;
-    case "favorite":
-      formValue = {
-        ...commonValue,
-        ...favorite,
-      };
-      console.log("favorite", formValue);
-      break;
-    case "reply":
-      formValue = {
-        ...commonValue,
-        ...reply,
-      };
-      console.log("reply", formValue);
-      break;
-  }
-
-  console.log("外；", formValue);
   // フォームに空白があれば取得
   const blankValue = Object.values(formValue).find((value) => value === "");
 

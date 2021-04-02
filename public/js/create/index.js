@@ -8,11 +8,10 @@ monitorLoginStatus()
   .then(({ loginStatus, uid }) => {
     if (loginStatus) {
       // フォームの種類を変更する処理
-      const formType = changeForm();
-      console.log(formType);
+      changeForm();
 
       // firestoreへの書き込み処理
-      createMethod(uid, formType);
+      createMethod(uid);
     }
   })
   .catch(() => {
