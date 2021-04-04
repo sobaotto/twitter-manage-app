@@ -1,6 +1,6 @@
 "use script";
 
-import getFormValue from "../edit/getFormValue.js";
+import getFormValue from "../commonFunctions/getFormValue.js";
 
 // firestoreへの書き込み処理
 const createFunction = (uid) => {

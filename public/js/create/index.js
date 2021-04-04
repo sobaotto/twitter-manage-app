@@ -1,8 +1,8 @@
 "use script";
 
 import monitorLoginStatus from "../auth/monitorLoginStatus.js";
-import changeForm from "./changeForm.js";
 import createFunction from "./createFunction.js";
+import changeForm from "../commonFunctions/changeForm.js";
 
 monitorLoginStatus()
   .then(({ loginStatus, uid }) => {

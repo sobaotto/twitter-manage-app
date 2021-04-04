@@ -12,7 +12,7 @@ const execution = async (twitterApiKey, processing) => {
   const startTime = processing["startTime"];
   // const processingType = "reply";
   const processingType = processing["processingType"];
-  const onOff = processing["switch"];
+  const onOffSwitch = processing["switch"];
   // 投稿処理
   // const postContent = "cute!";
   const postContent = processing["tweet"];
@@ -21,7 +21,7 @@ const execution = async (twitterApiKey, processing) => {
   const searchWord = processing["searchWord"];
   const favoriteCount = processing["favoriteCount"];
 
-  if (onOff === "OFF" || startTime !== japanTime) {
+  if (onOffSwitch === "OFF" || startTime !== japanTime) {
     return;
   }
 

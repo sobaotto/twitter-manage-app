@@ -1,12 +1,12 @@
 "use script";
 
-const editItem = async (uid) => {
+const fetchEditItems = async (uid) => {
   const editTarget = document.getElementById("editTarget");
 
   const db = firebase.firestore();
 
   // 処理名と処理のdoc.idを格納する
-  const processings = [];
+  const editItems = [];
 
   const USER = "User";
   const PROCESSING = "Processing";
@@ -22,7 +22,7 @@ const editItem = async (uid) => {
       snapshot.forEach((doc) => {
         const processingData = {
           id: doc.id,
-          processingName: doc.data().processingName,
+          ...doc.data(),
         };
 
         const processingNameOption = document.createElement("option");
@@ -30,10 +30,12 @@ const editItem = async (uid) => {
         processingNameOption.textContent = processingData.processingName;
         editTarget.appendChild(processingNameOption);
 
-        processings.push(processingData);
+        editItems.push(processingData);
       });
     });
-  return processings;
+  // 【質問】上のawaitした処理のforEachが非同期処理なので、
+  // ここのreturnはうまくいかない場合がある気がした？2021/04/03
+  return editItems;
 };
 
-export default editItem;
+export default fetchEditItems;

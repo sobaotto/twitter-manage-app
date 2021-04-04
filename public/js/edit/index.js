@@ -2,23 +2,32 @@
 
 import deleteFunction from "./deleteFunction.js";
 import updateFunction from "./updateFunction.js";
-import editItem from "./editItem.js";
+import fetchEditItems from "./fetchEditItems.js";
 import monitorLoginStatus from "../auth/monitorLoginStatus.js";
-import changeForm from "../create/changeForm.js";
+import changeForm from "../commonFunctions/changeForm.js";
+import reflectEditingProcessing from "./reflectEditingProcessing.js";
+import firstRendering from "./firstRendering.js";
+import getEditingProcessingId from "./getEditingProcessingId.js";
 
 monitorLoginStatus()
   .then(({ loginStatus, uid }) => {
     if (loginStatus) {
-      // フォームの種類を変更する処理
-      changeForm();
-
-      editItem(uid).then((editItem) => {
-        if (editItem.length === 0) {
+      fetchEditItems(uid).then((editItems) => {
+        if (editItems.length === 0) {
           alert("まだ処理が登録されていません。");
           location.replace("../../admin.html");
         }
-        updateFunction(editItem, uid);
-        deleteFunction(editItem, uid);
+        firstRendering(editItems);
+        reflectEditingProcessing(editItems);
+
+        // フォームの種類を変更する処理
+        changeForm();
+
+        const editingProcessingId = getEditingProcessingId(editItems);
+
+        // Firestoreに対する処理
+        updateFunction(editingProcessingId, uid);
+        deleteFunction(editingProcessingId, uid);
       });
     }
   })

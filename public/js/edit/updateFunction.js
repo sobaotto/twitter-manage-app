@@ -1,15 +1,12 @@
 "use script";
 
-import getEditingProcessingId from "./getEditingProcessingId.js";
-import getFormValue from "./getFormValue.js";
+import getFormValue from "../commonFunctions/getFormValue.js";
 
-const updateFunction = (editItem, uid) => {
+const updateFunction = (editingProcessingId, uid) => {
   const submitButton = document.getElementById("submit");
 
   // 更新ボタンを押した時の挙動
   submitButton.addEventListener("click", async () => {
-    const editingProcessingId = getEditingProcessingId(editItem);
-
     const formId = "edit-form";
     const selectedElement = document.querySelector(
       "input[name=processingType]:checked"

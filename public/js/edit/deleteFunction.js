@@ -1,14 +1,11 @@
 "use script";
-import getEditingProcessingId from "./getEditingProcessingId.js";
 
 // 削除ボタンを押した時の挙動
-const deleteFunction = async (editItem, uid) => {
+const deleteFunction = async (editingProcessingId, uid) => {
   // 削除ボタンの要素を取得
   const deleteButton = document.getElementById("delete");
 
   deleteButton.addEventListener("click", async () => {
-    const editingProcessingId = getEditingProcessingId(editItem);
-
     const db = firebase.firestore();
 
     const USER = "User";
