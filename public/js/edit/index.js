@@ -7,7 +7,6 @@ import monitorLoginStatus from "../auth/monitorLoginStatus.js";
 import changeForm from "../commonFunctions/changeForm.js";
 import reflectEditingProcessing from "./reflectEditingProcessing.js";
 import firstRendering from "./firstRendering.js";
-import getEditingProcessingId from "./getEditingProcessingId.js";
 
 monitorLoginStatus()
   .then(({ loginStatus, uid }) => {
@@ -23,11 +22,9 @@ monitorLoginStatus()
         // フォームの種類を変更する処理
         changeForm();
 
-        const editingProcessingId = getEditingProcessingId(editItems);
-
         // Firestoreに対する処理
-        updateFunction(editingProcessingId, uid);
-        deleteFunction(editingProcessingId, uid);
+        updateFunction(editItems, uid);
+        deleteFunction(editItems, uid);
       });
     }
   })

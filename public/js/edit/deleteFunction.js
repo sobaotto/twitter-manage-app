@@ -1,7 +1,9 @@
 "use script";
 
+import getEditingProcessing from "./getEditingProcessing.js";
+
 // 削除ボタンを押した時の挙動
-const deleteFunction = async (editingProcessingId, uid) => {
+const deleteFunction = async (editItems, uid) => {
   // 削除ボタンの要素を取得
   const deleteButton = document.getElementById("delete");
 
@@ -11,11 +13,13 @@ const deleteFunction = async (editingProcessingId, uid) => {
     const USER = "User";
     const PROCESSING = "Processing";
 
+    const editingProcessing = getEditingProcessing(editItems);
+
     await db
       .collection(USER)
       .doc(uid)
       .collection(PROCESSING)
-      .doc(editingProcessingId)
+      .doc(editingProcessing.id)
       .delete()
       .then(() => {
         alert("削除が完了しました。\n管理画面に戻ります。");

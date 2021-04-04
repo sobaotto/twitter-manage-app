@@ -1,6 +1,6 @@
 "use script";
 
-const getEditingProcessingId = (editItems) => {
+const getEditingProcessing = (editItems) => {
   const editTarget = document.getElementById("editTarget");
 
   const selectedIndex = editTarget.selectedIndex;
@@ -11,8 +11,8 @@ const getEditingProcessingId = (editItems) => {
   );
 
   if (processingData) {
-    return processingData.id;
+    return processingData;
   }
 };
 
-export default getEditingProcessingId;
+export default getEditingProcessing;

@@ -1,8 +1,9 @@
 "use script";
 
 import getFormValue from "../commonFunctions/getFormValue.js";
+import getEditingProcessing from "./getEditingProcessing.js";
 
-const updateFunction = (editingProcessingId, uid) => {
+const updateFunction = (editItems, uid) => {
   const submitButton = document.getElementById("submit");
 
   // 更新ボタンを押した時の挙動
@@ -19,14 +20,22 @@ const updateFunction = (editingProcessingId, uid) => {
     const USER = "User";
     const PROCESSING = "Processing";
 
+    const editingProcessing = getEditingProcessing(editItems);
+
     console.log(formValue);
+
+    if (formValue.processingName === editingProcessing.processingName) {
+      alert("同じ名前の処理は作成できません。");
+      return;
+    }
+
     if (formValue) {
       try {
         await db
           .collection(USER)
           .doc(uid)
           .collection(PROCESSING)
-          .doc(editingProcessingId)
+          .doc(editingProcessing.id)
           .update({
             ...formValue,
             updatedAt: new Date(),
