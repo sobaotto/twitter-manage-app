@@ -16,6 +16,8 @@ monitorLoginStatus()
           alert("まだ処理が登録されていません。");
           location.replace("../../admin.html");
         }
+
+        // 【質問】changeイベントを初回レンダリング時に実行する方法は？2021/04/05
         firstRendering(editItems);
         reflectEditingProcessing(editItems);
 
