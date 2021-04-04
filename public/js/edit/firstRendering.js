@@ -36,8 +36,12 @@ const firstRendering = (editItems) => {
 
   processingName.setAttribute("value", `${processingData.processingName}`);
   startTime.setAttribute("value", `${processingData.startTime}`);
-  targetWord.setAttribute("value", `${processingData.targetWord}`);
-  maxCount.setAttribute("value", `${processingData.maxCount}`);
+  if (processingData.targetWord) {
+    targetWord.setAttribute("value", `${processingData.targetWord}`);
+  }
+  if (processingData.maxCount) {
+    maxCount.setAttribute("value", `${processingData.maxCount}`);
+  }
   tweet.textContent = processingData.tweet;
 
   // 選択肢によってフォームの形を変える処理
