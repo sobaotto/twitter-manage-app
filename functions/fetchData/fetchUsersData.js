@@ -1,4 +1,5 @@
 const admin = require("firebase-admin");
+const { USER } = require("../constant");
 const serviceAccount = require("../keys/serviceAccountKey.json");
 const fetchProcessingsData = require("./fetchProcessingsData");
 
@@ -12,8 +13,6 @@ const fetchUsersData = () => {
   const db = admin.firestore();
 
   const usersData = [];
-
-  const USER = "User";
 
   return db
     .collection(USER)

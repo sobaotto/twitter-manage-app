@@ -2,16 +2,14 @@
 
 import monitorLoginStatus from "./auth/monitorLoginStatus.js";
 import twitterSignout from "./auth/sign/signout.js";
+import { PROCESSING, USER } from "./constant.js";
 
 monitorLoginStatus()
   .then(({ loginStatus, uid }) => {
     if (loginStatus) {
       const db = firebase.firestore();
 
-      const collection = db
-        .collection("User")
-        .doc(uid)
-        .collection("Processing");
+      const collection = db.collection(USER).doc(uid).collection(PROCESSING);
 
       const table = document.querySelector("table");
 

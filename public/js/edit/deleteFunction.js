@@ -1,5 +1,6 @@
 "use script";
 
+import { PROCESSING, USER } from "../constant.js";
 import getEditingProcessing from "./getEditingProcessing.js";
 
 // 削除ボタンを押した時の挙動
@@ -9,9 +10,6 @@ const deleteFunction = async (editItems, uid) => {
 
   deleteButton.addEventListener("click", async () => {
     const db = firebase.firestore();
-
-    const USER = "User";
-    const PROCESSING = "Processing";
 
     const editingProcessing = getEditingProcessing(editItems);
 

@@ -1,6 +1,7 @@
 "use script";
 
 import getFormValue from "../commonFunctions/getFormValue.js";
+import { PROCESSING, USER } from "../constant.js";
 import getEditingProcessing from "./getEditingProcessing.js";
 
 const updateFunction = (editItems, uid) => {
@@ -16,9 +17,6 @@ const updateFunction = (editItems, uid) => {
     const formValue = getFormValue(formId, selectedElement.value);
 
     const db = firebase.firestore();
-
-    const USER = "User";
-    const PROCESSING = "Processing";
 
     const editingProcessing = getEditingProcessing(editItems);
 

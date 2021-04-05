@@ -1,5 +1,7 @@
 "use script";
 
+import { PROCESSING, USER } from "../constant.js";
+
 const fetchEditItems = async (uid) => {
   const editTarget = document.getElementById("editTarget");
 
@@ -7,9 +9,6 @@ const fetchEditItems = async (uid) => {
 
   // 処理名と処理のdoc.idを格納する
   const editItems = [];
-
-  const USER = "User";
-  const PROCESSING = "Processing";
 
   // データベースから処理名を取得し、プルダウンで表示
   await db

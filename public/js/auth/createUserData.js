@@ -1,12 +1,14 @@
 "use strict";
 
+import { USER } from "../constant";
+
 const db = firebase.firestore();
 
 const createUserData = (userData) => {
   const uids = [];
 
   return db
-    .collection("User")
+    .collection(USER)
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -22,7 +24,7 @@ const createUserData = (userData) => {
 
       return new Promise((resolve, reject) => {
         if (!userRegistration) {
-          db.collection("User")
+          db.collection(USER)
             .doc(userData.uid)
             .set(userData)
             .catch((error) => console.error(error))

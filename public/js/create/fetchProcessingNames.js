@@ -1,13 +1,12 @@
 "user strict";
 
+import { PROCESSING, USER } from "../constant";
+
 const fetchProcessingNames = async (uid) => {
   return new Promise(async (resolve, reject) => {
     const db = firebase.firestore();
 
     const processingNames = [];
-
-    const USER = "User";
-    const PROCESSING = "Processing";
 
     await db
       .collection(USER)
