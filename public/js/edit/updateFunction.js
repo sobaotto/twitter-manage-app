@@ -1,5 +1,6 @@
 "use script";
 
+import { FIRESTORE_COLLECTION_ITEMS } from "../../../functions/const/firestore-collection.js";
 import getEditingProcessingId from "./getEditingProcessingId.js";
 import getFormValue from "./getFormValue.js";
 
@@ -19,9 +20,9 @@ const updateFunction = (db, editItem, uid) => {
     } else {
       try {
         await db
-          .collection("User")
+          .collection(FIRESTORE_COLLECTION_ITEMS.USER)
           .doc(uid)
-          .collection("Processing")
+          .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING)
           .doc(editingProcessingId)
           .update({
             ...formValue,

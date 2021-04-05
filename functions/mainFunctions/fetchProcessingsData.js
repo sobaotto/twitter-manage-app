@@ -1,4 +1,5 @@
 const admin = require("firebase-admin");
+const { FIRESTORE_COLLECTION_ITEMS } = require("../const/firestore-collection");
 const serviceAccount = require("../keys/serviceAccountKey.json");
 
 const fetchProcessingsData = async () => {
@@ -13,7 +14,7 @@ const fetchProcessingsData = async () => {
   const processingsData = [];
 
   await db
-    .collection("Processing")
+    .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING)
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {

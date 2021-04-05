@@ -1,5 +1,7 @@
 "use script";
 
+import { FIRESTORE_COLLECTION_ITEMS } from "../../../functions/const/firestore-collection";
+
 const editItem = async (db, uid) => {
   const editTarget = document.getElementById("editTarget");
 
@@ -8,9 +10,9 @@ const editItem = async (db, uid) => {
 
   // データベースから処理名を取得し、プルダウンで表示
   await db
-    .collection("User")
+    .collection(FIRESTORE_COLLECTION_ITEMS.USER)
     .doc(uid)
-    .collection("Processing")
+    .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING)
     .orderBy("updatedAt", "desc")
     .get()
     .then((snapshot) => {
