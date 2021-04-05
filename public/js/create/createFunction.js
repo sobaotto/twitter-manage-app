@@ -14,6 +14,9 @@ const createFunction = (uid) => {
     );
 
     const formValue = getFormValue(formId, selectedElement.value);
+    if (!formValue) {
+      return;
+    }
 
     const db = firebase.firestore();
 
@@ -23,9 +26,6 @@ const createFunction = (uid) => {
 
     const processingNames = await fetchProcessingNames(uid);
 
-    console.log("processingNames: ", processingNames);
-    console.log("processingNames[0]: ", processingNames[0]);
-
     for (const existingProcessingName of processingNames) {
       console.log(existingProcessingName);
 
@@ -34,8 +34,6 @@ const createFunction = (uid) => {
         return;
       }
     }
-
-    console.log("forof抜けた");
 
     if (formValue) {
       try {

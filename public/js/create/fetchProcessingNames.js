@@ -1,6 +1,6 @@
 "user strict";
 
-const fetchProcessingNames = (uid) => {
+const fetchProcessingNames = async (uid) => {
   return new Promise(async (resolve, reject) => {
     const db = firebase.firestore();
 
