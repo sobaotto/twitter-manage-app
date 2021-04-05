@@ -1,6 +1,6 @@
 "use strict";
 
-import { USER } from "../constant";
+import { USER } from "../constant.js";
 
 const db = firebase.firestore();
 

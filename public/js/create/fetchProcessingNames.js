@@ -1,6 +1,6 @@
 "user strict";
 
-import { PROCESSING, USER } from "../constant";
+import { PROCESSING, USER } from "../constant.js";
 
 const fetchProcessingNames = async (uid) => {
   return new Promise(async (resolve, reject) => {
