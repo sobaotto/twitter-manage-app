@@ -1,37 +1,42 @@
 "use script";
 
-const db = firebase.firestore();
+import monitorLoginStatus from "./auth/monitorLoginStatus.js";
 
-const collection = db.collection("functions");
+monitorLoginStatus().then(({ loginStatus, uid }) => {
+  if (loginStatus) {
+    const db = firebase.firestore();
 
-const table = document.querySelector("table");
+    const collection = db.collection("User").doc(uid).collection("Processing");
 
-collection
-  .orderBy("updatedAt", "desc")
-  .get()
-  .then((snapshot) => {
+    const table = document.querySelector("table");
 
-    let Number = 0;
+    collection
+      .orderBy("updatedAt", "desc")
+      .get()
+      .then((snapshot) => {
+        let number = 0;
 
-    // 管理画面に設定した処理一覧を表示する
-    snapshot.forEach((doc) => {
-      const functionTr = document.createElement("tr");
-      const functionNumberTd = document.createElement("td");
-      const functionNameTd = document.createElement("td");
-      const switchTd = document.createElement("td");
+        // 管理画面に設定した処理一覧を表示する
+        snapshot.forEach((doc) => {
+          const processingTr = document.createElement("tr");
+          const processingNumberTd = document.createElement("td");
+          const processingNameTd = document.createElement("td");
+          const switchTd = document.createElement("td");
 
-      Number++;
+          number++;
 
-      functionNumberTd.textContent = Number;
-      functionNumberTd.classList.add("text-center");
-      functionTr.appendChild(functionNumberTd);
+          processingNumberTd.textContent = number;
+          processingNumberTd.classList.add("text-center");
+          processingTr.appendChild(processingNumberTd);
 
-      functionNameTd.textContent = doc.data().functionName;
-      functionTr.appendChild(functionNameTd);
+          processingNameTd.textContent = doc.data().processingName;
+          processingTr.appendChild(processingNameTd);
 
-      switchTd.textContent = doc.data().switch;
-      functionTr.appendChild(switchTd);
+          switchTd.textContent = doc.data().switch;
+          processingTr.appendChild(switchTd);
 
-      table.appendChild(functionTr);
-    });
-  });
+          table.appendChild(processingTr);
+        });
+      });
+  }
+});

@@ -10,14 +10,14 @@
     <div id="container">
       <h2>Let's make your processing!</h2>
       <h1>｜処理の新規作成</h1>
-      <form method="post" class="form" id="create-form">
+      <form class="form" id="create-form">
         <ul class="processing-form">
           <li>
-            <label for="functionName">処理の名前：</label>
+            <label for="processingName">処理の名前：</label>
             <input
               type="text"
-              name="functionName"
-              id="functionName"
+              name="processingName"
+              id="processingName"
               placeholder="処理の名前を入力..."
             />
           </li>
@@ -83,7 +83,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
     <script src="./js/config.js"></script>
-    <script src="./js/create.js"></script>
+    <script src="./js/create.js" type="module"></script>
   </body>
 </html>

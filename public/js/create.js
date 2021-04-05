@@ -1,27 +1,38 @@
 "use script";
 
 import getFormValue from "./edit/getFormValue.js";
+import monitorLoginStatus from "./auth/monitorLoginStatus.js";
 
-const db = firebase.firestore();
+monitorLoginStatus().then(({ loginStatus, uid }) => {
+  if (loginStatus) {
+    const db = firebase.firestore();
 
-const collection = db.collection("functions");
+    const submitButton = document.getElementById("submit");
 
-const submitButton = document.getElementById("submit");
+    submitButton.addEventListener("click", async () => {
+      const formId = "create-form";
+      const formValue = getFormValue(formId);
 
-submitButton.addEventListener("click", async () => {
-  const formId = "create-form";
-  const formValue = getFormValue(formId);
+      if (formValue === false) {
+        return;
+      } else {
+        try {
+          await db
+            .collection("User")
+            .doc(uid)
+            .collection("Processing")
+            .add({
+              ...formValue,
+              createdAt: new Date(),
+              updatedAt: new Date(),
+            });
 
-  try {
-    await collection.add({
-      ...formValue,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+          alert("追加作業が完了しました。\n管理画面に戻ります。");
+          location.replace("../admin.html");
+        } catch (error) {
+          console.log("add error");
+        }
+      }
     });
-
-    alert("追加作業が完了しました。\n管理画面に戻ります。");
-    location.replace("../admin.html");
-  } catch (error) {
-    console.log("add error");
   }
 });
