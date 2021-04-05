@@ -4,6 +4,12 @@ import { FIRESTORE_COLLECTION_ITEMS } from "../../../functions/const/firestore-c
 import getEditingProcessingId from "./getEditingProcessingId.js";
 import getFormValue from "./getFormValue.js";
 
+/**
+ * 予約情報を更新する
+ * @param {*} db firestore のオブジェクト
+ * @param {*} editItem 修正したい項目
+ * @param {*} uid ログインユーザー
+ */
 const updateFunction = (db, editItem, uid) => {
   const submitButton = document.getElementById("submit");
 
