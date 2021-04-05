@@ -1,7 +1,7 @@
 "user strict";
 
 const fetchProcessingNames = (uid) => {
-  return new Promise((resolve) => {
+  return new Promise(async (resolve, reject) => {
     const db = firebase.firestore();
 
     const processingNames = [];
@@ -9,7 +9,8 @@ const fetchProcessingNames = (uid) => {
     const USER = "User";
     const PROCESSING = "Processing";
 
-    db.collection(USER)
+    await db
+      .collection(USER)
       .doc(uid)
       .collection(PROCESSING)
       .get()
@@ -18,8 +19,11 @@ const fetchProcessingNames = (uid) => {
           processingNames.push(doc.data().processingName);
         });
       });
+
     if (processingNames) {
       resolve(processingNames);
+    } else {
+      reject("失敗");
     }
   });
 };

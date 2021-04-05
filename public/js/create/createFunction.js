@@ -23,38 +23,16 @@ const createFunction = (uid) => {
 
     const processingNames = await fetchProcessingNames(uid);
 
-    // for (let index = 0; index < processingNames.length; index++) {
-    //   const a = processingNames[index];
-    //   console.log(a);
-    // }
-
-    // const processingNames = [
-    //   "投！！！！",
-    //   "220",
-    //   "fasdfas",
-    //   "投稿",
-    //   "投！！！！",
-    //   "220時",
-    //   "19時11分",
-    //   "fadsha",
-    //   "投！！！！",
-    //   "投！！！！",
-    //   "投！！！！",
-    //   "fasd",
-    //   "いいね",
-    //   "投！！！！",
-    // ];
-    console.log(processingNames);
+    console.log("processingNames: ", processingNames);
+    console.log("processingNames[0]: ", processingNames[0]);
 
     for (const existingProcessingName of processingNames) {
       console.log(existingProcessingName);
 
-      // console.log(`${formValue.processingName} === ${existingProcessingName}`);
-
-      // if (formValue.processingName === existingProcessingName) {
-      //   alert("同じ名前の処理は作成できません。");
-      //   return;
-      // }
+      if (formValue.processingName === existingProcessingName) {
+        alert("同じ名前の処理は作成できません。");
+        return;
+      }
     }
 
     console.log("forof抜けた");

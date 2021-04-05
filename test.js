@@ -15,7 +15,7 @@ const test = [
   "投！！！！",
 ];
 
-console.log(test);
+console.log(typeof test);
 
 for (const a of test) {
   console.log(a);
