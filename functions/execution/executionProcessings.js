@@ -22,8 +22,16 @@ const executionProcessings = async () => {
 
     const processings = userData["processings"];
 
+    let i = 0;
+
     for (const processing of processings) {
-      await execution(twitterApiKey, processing);
+      await execution(twitterApiKey, processing)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     }
   }
 };

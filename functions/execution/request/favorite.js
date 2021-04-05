@@ -1,9 +1,9 @@
 const Twitter = require("twitter");
 
-const favorite = (twitterApiKey, searchWord, count) => {
+const favorite = async (twitterApiKey, searchWord, count) => {
   const client = new Twitter(twitterApiKey);
 
-  client
+  await client
     .get("search/tweets", { q: searchWord, count: count })
     .then((tweets) => {
       for (tweet of tweets.statuses) {

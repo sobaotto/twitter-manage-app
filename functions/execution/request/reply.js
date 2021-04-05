@@ -1,11 +1,9 @@
 const Twitter = require("twitter");
 
-const reply = (twitterApiKey, searchWord, postContent) => {
+const reply = async (twitterApiKey, searchWord, postContent) => {
   const client = new Twitter(twitterApiKey);
 
-  console.log(twitterApiKey, searchWord, postContent);
-
-  client
+  await client
     .get("search/tweets", { q: searchWord, count: 1 })
     .then((tweet) => {
       const screenName = tweet.statuses[0].user.screen_name;
@@ -25,7 +23,7 @@ const reply = (twitterApiKey, searchWord, postContent) => {
           console.log("reply: " + reply.text);
         })
         .catch((error) => {
-          console.log("リプライ関数", error);
+          console.log(error);
         });
     })
     .catch((error) => {

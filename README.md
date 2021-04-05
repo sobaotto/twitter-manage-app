@@ -12,8 +12,6 @@
 - [ ] 自動リプライ機能
 - [ ] web ページの見栄え
 - [ ] 更新時に不要なデータを削除する
-- [ ] createFunction.jsでprocessingNamesがundifinedになる
-- [ ] 
 
 ### 調べること
 

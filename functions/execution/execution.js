@@ -10,22 +10,17 @@ const execution = async (twitterApiKey, processing) => {
 
   // 処理情報取得
   const startTime = processing["startTime"];
-  // const processingType = "reply";
   const processingType = processing["processingType"];
   const onOffSwitch = processing["switch"];
   // 投稿処理
-  // const postContent = "cute!";
   const postContent = processing["tweet"];
   // いいね処理
-  // const searchWord = "チェヨン";
   const searchWord = processing["searchWord"];
   const favoriteCount = processing["favoriteCount"];
 
   if (onOffSwitch === "OFF" || startTime !== japanTime) {
     return;
   }
-
-  console.log(processing);
 
   switch (processingType) {
     case "post":

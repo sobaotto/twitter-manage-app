@@ -1,9 +1,9 @@
 const Twitter = require("twitter");
 
-const post = (twitterApiKey, postContent) => {
+const post = async (twitterApiKey, postContent) => {
   const client = new Twitter(twitterApiKey);
 
-  client
+  await client
     .post("statuses/update", { status: postContent })
     .then(() => {})
     .catch((e) => {
