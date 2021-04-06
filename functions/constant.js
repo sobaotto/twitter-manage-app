@@ -1,1 +1,2 @@
-export const USER = "User";
+exports.USER = "User";
+exports.PROCESSING = "Processing";

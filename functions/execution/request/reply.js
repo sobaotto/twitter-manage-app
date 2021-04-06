@@ -1,34 +1,41 @@
 const Twitter = require("twitter");
 
-const reply = async (twitterApiKey, searchWord, postContent) => {
-  const client = new Twitter(twitterApiKey);
+const reply = (twitterApiKey, searchWord, postContent) => {
+  return new Promise(async (resolve, reject) => {
+    const client = new Twitter(twitterApiKey);
 
-  await client
-    .get("search/tweets", { q: searchWord, count: 1 })
-    .then((tweet) => {
-      const screenName = tweet.statuses[0].user.screen_name;
-      const tweetId = tweet.statuses[0].id_str;
+    const params = {
+      q: searchWord,
+      count: 1,
+    };
 
-      const replyMessage = "@" + screenName + "\n" + postContent;
+    await client
+      .get("search/tweets", params)
+      .then(async (tweets) => {
+        const screenName = tweets.statuses[0].user.screen_name;
+        const tweetId = tweets.statuses[0].id_str;
 
-      client
-        .post("statuses/update", {
-          status: replyMessage,
-          in_reply_to_status_id: tweetId,
-        })
-        .then((reply) => {
-          const targetScreenName = reply.entities.user_mentions[0].screen_name;
+        const replyMessage = "@" + screenName + "\n" + postContent;
 
-          console.log("targetScreenName: " + targetScreenName);
-          console.log("reply: " + reply.text);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+        await client
+          .post("statuses/update", {
+            status: replyMessage,
+            in_reply_to_status_id: tweetId,
+            count: 1,
+          })
+          .then((reply) => {
+            resolve(reply);
+          })
+          .catch((error) => {
+            console.log("リプライ実行のエラー");
+            reject(error);
+          });
+      })
+      .catch((error) => {
+        console.log("ツイート検索のエラー");
+        reject(error);
+      });
+  });
 };
 
 module.exports = reply;

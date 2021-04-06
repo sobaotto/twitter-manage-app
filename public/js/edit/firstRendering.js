@@ -14,7 +14,7 @@ const firstRendering = (editItems) => {
 
   const processingName = document.getElementById("processingName");
   const startTime = document.getElementById("startTime");
-  const targetWord = document.getElementById("targetWord");
+  const searchWord = document.getElementById("searchWord");
   const maxCount = document.getElementById("maxCount");
   const tweet = document.getElementById("tweet");
 
@@ -36,8 +36,8 @@ const firstRendering = (editItems) => {
 
   processingName.setAttribute("value", `${processingData.processingName}`);
   startTime.setAttribute("value", `${processingData.startTime}`);
-  if (processingData.targetWord) {
-    targetWord.setAttribute("value", `${processingData.targetWord}`);
+  if (processingData.searchWord) {
+    searchWord.setAttribute("value", `${processingData.searchWord}`);
   }
   if (processingData.maxCount) {
     maxCount.setAttribute("value", `${processingData.maxCount}`);

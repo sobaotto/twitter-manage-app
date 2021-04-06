@@ -11,6 +11,7 @@ const executionProcessings = async () => {
     const accessTokenKey = userData["userInfo"]["accessTokenKey"];
     const accessTokenSecret = userData["userInfo"]["accessTokenSecret"];
     const screenName = userData["userInfo"]["screenName"];
+    const uid = userData["userInfo"]["uid"];
 
     console.log("screen_name : ", screenName);
 
@@ -22,13 +23,9 @@ const executionProcessings = async () => {
 
     const processings = userData["processings"];
 
-    let i = 0;
-
     for (const processing of processings) {
-      await execution(twitterApiKey, processing)
-        .then((res) => {
-          console.log(res);
-        })
+      await execution(twitterApiKey, processing, uid)
+        .then(() => {})
         .catch((e) => {
           console.error(e);
         });
@@ -36,8 +33,8 @@ const executionProcessings = async () => {
   }
 };
 
-(async () => {
-  await executionProcessings();
-})();
+// (async () => {
+//   await executionProcessings();
+// })();
 
-// module.exports = executionProcessings;
+module.exports = executionProcessings;

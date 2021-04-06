@@ -1,24 +1,34 @@
 const Twitter = require("twitter");
 
-const favorite = async (twitterApiKey, searchWord, count) => {
-  const client = new Twitter(twitterApiKey);
+const favorite = (twitterApiKey, searchWord, executionCounter) => {
+  return new Promise(async (resolve, reject) => {
+    const client = new Twitter(twitterApiKey);
 
-  await client
-    .get("search/tweets", { q: searchWord, count: count })
-    .then((tweets) => {
-      for (tweet of tweets.statuses) {
-        client
-          .post("favorites/create", { id: tweet.id_str })
+    console.log("favorite関数の中", executionCounter);
+
+    const params = {
+      q: searchWord,
+      count: 1,
+    };
+
+    await client
+      .get("search/tweets", params)
+      .then(async (tweets) => {
+        await client
+          .post("favorites/create", { id: tweets.statuses[0].id_str, count: 1 })
           .then((tweet) => {
-            console.log("Username: " + tweet.user.name);
-            console.log("tweet: " + tweet.text);
-            console.log("----------------");
+            resolve(tweet);
           })
           .catch((error) => {
-            console.log(error);
+            console.log("ふぁぼ実行のエラー");
+            reject(error);
           });
-      }
-    });
+      })
+      .catch((error) => {
+        console.log("ツイート検索のエラー");
+        reject(error);
+      });
+  });
 };
 
 module.exports = favorite;
