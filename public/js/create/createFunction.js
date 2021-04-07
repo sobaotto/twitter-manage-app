@@ -42,6 +42,7 @@ const createFunction = (uid) => {
             ...formValue,
             createdAt: new Date(),
             updatedAt: new Date(),
+            executionCounter: 0,
           });
 
         alert("追加作業が完了しました。\n管理画面に戻ります。");

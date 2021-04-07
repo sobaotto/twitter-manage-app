@@ -70,7 +70,9 @@ const execution = async (twitterApiKey, processing, uid) => {
       if (maxCount > executionCounter) {
         // await replyPython(twitterApiKey, searchWord, postContent);
         reply(twitterApiKey, searchWord, postContent)
-          .then(async () => {
+          .then(async (res) => {
+            console.log(res);
+
             executionCounter++;
 
             console.log("リプライ分岐の中", executionCounter);

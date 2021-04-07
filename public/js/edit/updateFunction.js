@@ -6,7 +6,7 @@ import getEditingProcessing from "./getEditingProcessing.js";
 
 /**
  * 予約情報を更新する
- * @param {*} editItem 修正したい項目
+ * @param {*} editItems 修正したい項目
  * @param {*} uid ログインユーザー
  */
 const updateFunction = (editItems, uid) => {
@@ -27,9 +27,21 @@ const updateFunction = (editItems, uid) => {
 
     console.log(formValue);
 
-    if (formValue.processingName === editingProcessing.processingName) {
-      alert("同じ名前の処理は作成できません。");
-      return;
+    const checkDuplicateNamesArray = editItems.filter(
+      (editItem) => editItem.processingName !== editingProcessing.processingName
+    );
+    console.log("checkDuplicateNamesArray: ", checkDuplicateNamesArray);
+
+    for (const processing of checkDuplicateNamesArray) {
+      console.log(
+        "formValue.processingName === processing.processingName",
+        `${formValue.processingName} === ${processing.processingName}`
+      );
+
+      if (formValue.processingName === processing.processingName) {
+        alert("同じ名前の処理は作成できません。");
+        return;
+      }
     }
 
     if (formValue) {

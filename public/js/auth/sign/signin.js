@@ -12,7 +12,7 @@ const twitterSignin = async () => {
   const uids = [];
 
   await db
-    .collection(FIRESTORE_COLLECTION_ITEMS)
+    .collection(FIRESTORE_COLLECTION_ITEMS.USER)
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {

@@ -17,12 +17,10 @@ const getFormValue = (formId, selectedProcessing) => {
       tweet: form.tweet.value.trim(),
       maxCount: form.maxCount.value.trim(),
       searchWord: form.searchWord.value.trim(),
-      executionCounter: 0,
     },
     favorite: {
       maxCount: form.maxCount.value.trim(),
       searchWord: form.searchWord.value.trim(),
-      executionCounter: 0,
     },
     post: {
       tweet: form.tweet.value.trim(),
