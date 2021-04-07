@@ -2,6 +2,7 @@
 
 import getFormValue from "./edit/getFormValue.js";
 import monitorLoginStatus from "./auth/monitorLoginStatus.js";
+import { FIRESTORE_COLLECTION_ITEMS } from "../../functions/const/firestore-collection.js";
 
 monitorLoginStatus().then(({ loginStatus, uid }) => {
   if (loginStatus) {
@@ -20,7 +21,7 @@ monitorLoginStatus().then(({ loginStatus, uid }) => {
           await db
             .collection("User")
             .doc(uid)
-            .collection("Processing")
+            .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING)
             .add({
               ...formValue,
               createdAt: new Date(),

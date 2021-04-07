@@ -1,12 +1,16 @@
 "use script";
 
+import { FIRESTORE_COLLECTION_ITEMS } from "../../functions/const/firestore-collection.js";
 import monitorLoginStatus from "./auth/monitorLoginStatus.js";
 
 monitorLoginStatus().then(({ loginStatus, uid }) => {
   if (loginStatus) {
     const db = firebase.firestore();
 
-    const collection = db.collection("User").doc(uid).collection("Processing");
+    const collection = db
+      .collection("User")
+      .doc(uid)
+      .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING);
 
     const table = document.querySelector("table");
 
