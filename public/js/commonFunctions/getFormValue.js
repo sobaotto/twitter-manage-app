@@ -44,8 +44,13 @@ const getFormValue = (formId, selectedProcessing) => {
 
   if (blankValue === "") {
     alert("空の項目があると更新できません。");
-  } else {
+    return;
+  }
+
+  if (/0$/.test(formValue.startTime) || /5$/.test(formValue.startTime)) {
     return formValue;
+  } else {
+    alert("開始時刻は５分刻みで入力してください。");
   }
 };
 

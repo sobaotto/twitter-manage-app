@@ -42,13 +42,13 @@ const createFunction = (uid) => {
             ...formValue,
             createdAt: new Date(),
             updatedAt: new Date(),
-            executionCounter: 0,
+            executionCounter: 99999,
           });
 
         alert("追加作業が完了しました。\n管理画面に戻ります。");
         location.replace("../admin.html");
       } catch (error) {
-        console.log("add error");
+        console.error(error);
       }
     }
   });
