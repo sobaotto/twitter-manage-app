@@ -28,6 +28,8 @@ monitorLoginStatus()
             const processingNumberTd = document.createElement("td");
             const processingNameTd = document.createElement("td");
             const switchTd = document.createElement("td");
+            const processingType = document.createElement("td");
+            const startTime = document.createElement("td");
 
             listNumber++;
 
@@ -40,6 +42,22 @@ monitorLoginStatus()
 
             switchTd.textContent = doc.data().switch;
             processingTr.appendChild(switchTd);
+
+            switch (doc.data().processingType) {
+              case "post":
+                processingType.textContent = "投稿";
+                break;
+              case "favorite":
+                processingType.textContent = "いいね";
+                break;
+              case "reply":
+                processingType.textContent = "リプライ";
+                break;
+            }
+            processingTr.appendChild(processingType);
+
+            startTime.textContent = doc.data().startTime;
+            processingTr.appendChild(startTime);
 
             table.appendChild(processingTr);
           });

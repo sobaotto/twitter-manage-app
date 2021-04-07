@@ -71,8 +71,6 @@ const execution = async (twitterApiKey, processing, uid) => {
         // await replyPython(twitterApiKey, searchWord, postContent);
         reply(twitterApiKey, searchWord, postContent)
           .then(async (res) => {
-            console.log(res);
-
             executionCounter++;
 
             console.log("リプライ分岐の中", executionCounter);
