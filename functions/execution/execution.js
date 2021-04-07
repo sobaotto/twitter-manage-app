@@ -6,7 +6,7 @@ const replyPython = require("./request/replyPython");
 const post = require("./request/post");
 const favorite = require("./request/favorite");
 const getJapanTime = require("../otherFunctions/getJapanTime");
-const { USER, PROCESSING } = require("../constant");
+const { FIRESTORE_COLLECTION_ITEMS } = require("../const/firestore-collection");
 
 const execution = async (twitterApiKey, processing, uid) => {
   const japanTime = getJapanTime();
@@ -26,9 +26,9 @@ const execution = async (twitterApiKey, processing, uid) => {
   const db = admin.firestore();
 
   const processingRef = db
-    .collection(USER)
+    .collection(FIRESTORE_COLLECTION_ITEMS.USER)
     .doc(uid)
-    .collection(PROCESSING)
+    .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING)
     .doc(id);
 
   if (onOffSwitch === "OFF") {

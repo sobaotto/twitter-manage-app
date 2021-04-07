@@ -1,7 +1,7 @@
 "use script";
 
+import { FIRESTORE_COLLECTION_ITEMS } from "../../const/firestore-collection.js";
 import getFormValue from "../commonFunctions/getFormValue.js";
-import { PROCESSING, USER } from "../constant.js";
 import fetchProcessingNames from "./fetchProcessingNames.js";
 
 // firestoreへの書き込み処理
@@ -35,9 +35,9 @@ const createFunction = (uid) => {
     if (formValue) {
       try {
         await db
-          .collection(USER)
+          .collection(FIRESTORE_COLLECTION_ITEMS.USER)
           .doc(uid)
-          .collection(PROCESSING)
+          .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING)
           .add({
             ...formValue,
             createdAt: new Date(),

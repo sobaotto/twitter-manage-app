@@ -1,6 +1,6 @@
 "use script";
 
-import { PROCESSING, USER } from "../constant.js";
+import { FIRESTORE_COLLECTION_ITEMS } from "../../const/firestore-collection.js";
 import getEditingProcessing from "./getEditingProcessing.js";
 
 // 削除ボタンを押した時の挙動
@@ -14,9 +14,9 @@ const deleteFunction = async (editItems, uid) => {
     const editingProcessing = getEditingProcessing(editItems);
 
     await db
-      .collection(USER)
+      .collection(FIRESTORE_COLLECTION_ITEMS.USER)
       .doc(uid)
-      .collection(PROCESSING)
+      .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING)
       .doc(editingProcessing.id)
       .delete()
       .then(() => {

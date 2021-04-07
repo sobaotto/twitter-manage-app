@@ -1,5 +1,5 @@
 const admin = require("firebase-admin");
-const { USER } = require("../constant");
+const { FIRESTORE_COLLECTION_ITEMS } = require("../const/firestore-collection");
 const serviceAccount = require("../keys/serviceAccountKey.json");
 const fetchProcessingsData = require("./fetchProcessingsData");
 
@@ -15,7 +15,7 @@ const fetchUsersData = () => {
   const usersData = [];
 
   return db
-    .collection(USER)
+    .collection(FIRESTORE_COLLECTION_ITEMS.USER)
     .get()
     .then(async (querySnapshot) => {
       for (const doc of querySnapshot.docs) {

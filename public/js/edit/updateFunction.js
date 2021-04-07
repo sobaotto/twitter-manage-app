@@ -1,9 +1,14 @@
 "use script";
 
+import { FIRESTORE_COLLECTION_ITEMS } from "../../const/firestore-collection.js";
 import getFormValue from "../commonFunctions/getFormValue.js";
-import { PROCESSING, USER } from "../constant.js";
 import getEditingProcessing from "./getEditingProcessing.js";
 
+/**
+ * 予約情報を更新する
+ * @param {*} editItem 修正したい項目
+ * @param {*} uid ログインユーザー
+ */
 const updateFunction = (editItems, uid) => {
   const submitButton = document.getElementById("submit");
 
@@ -30,9 +35,9 @@ const updateFunction = (editItems, uid) => {
     if (formValue) {
       try {
         await db
-          .collection(USER)
+          .collection(FIRESTORE_COLLECTION_ITEMS.USER)
           .doc(uid)
-          .collection(PROCESSING)
+          .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING)
           .doc(editingProcessing.id)
           .update({
             ...formValue,

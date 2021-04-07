@@ -1,5 +1,5 @@
 const admin = require("firebase-admin");
-const { USER } = require("../constant");
+const { FIRESTORE_COLLECTION_ITEMS } = require("../const/firestore-collection");
 const serviceAccount = require("../keys/serviceAccountKey.json");
 
 const fetchProcessingsData = async (uid) => {
@@ -11,7 +11,7 @@ const fetchProcessingsData = async (uid) => {
 
   const db = admin.firestore();
 
-  const sfRef = db.collection(USER).doc(uid);
+  const sfRef = db.collection(FIRESTORE_COLLECTION_ITEMS.USER).doc(uid);
   const collections = await sfRef.listCollections();
   const processings = [];
 

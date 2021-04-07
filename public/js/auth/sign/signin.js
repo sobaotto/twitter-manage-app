@@ -2,7 +2,7 @@
 
 import twitterOAuth from "../twitterOAuth.js";
 import monitorLoginStatus from "../monitorLoginStatus.js";
-import { USER } from "../../constant.js";
+import { FIRESTORE_COLLECTION_ITEMS } from "../../../const/firestore-collection.js";
 
 const twitterSignin = async () => {
   const signInButton = document.getElementById("signin");
@@ -12,7 +12,7 @@ const twitterSignin = async () => {
   const uids = [];
 
   await db
-    .collection(USER)
+    .collection(FIRESTORE_COLLECTION_ITEMS)
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {

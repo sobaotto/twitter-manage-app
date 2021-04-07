@@ -1,6 +1,6 @@
 "user strict";
 
-import { PROCESSING, USER } from "../constant.js";
+import { FIRESTORE_COLLECTION_ITEMS } from "../../const/firestore-collection.js";
 
 const fetchProcessingNames = async (uid) => {
   return new Promise(async (resolve, reject) => {
@@ -9,9 +9,9 @@ const fetchProcessingNames = async (uid) => {
     const processingNames = [];
 
     await db
-      .collection(USER)
+      .collection(FIRESTORE_COLLECTION_ITEMS.USER)
       .doc(uid)
-      .collection(PROCESSING)
+      .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING)
       .get()
       .then((processingDatas) => {
         processingDatas.forEach((doc) => {

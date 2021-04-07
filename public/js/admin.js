@@ -1,15 +1,18 @@
 "use script";
 
+import { FIRESTORE_COLLECTION_ITEMS } from "../const/firestore-collection.js";
 import monitorLoginStatus from "./auth/monitorLoginStatus.js";
 import twitterSignout from "./auth/sign/signout.js";
-import { PROCESSING, USER } from "./constant.js";
 
 monitorLoginStatus()
   .then(({ loginStatus, uid }) => {
     if (loginStatus) {
       const db = firebase.firestore();
 
-      const collection = db.collection(USER).doc(uid).collection(PROCESSING);
+      const collection = db
+        .collection(FIRESTORE_COLLECTION_ITEMS.USER)
+        .doc(uid)
+        .collection(FIRESTORE_COLLECTION_ITEMS.PROCESSING);
 
       const table = document.querySelector("table");
 
