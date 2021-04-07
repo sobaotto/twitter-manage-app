@@ -37,12 +37,6 @@ monitorLoginStatus()
             processingNumberTd.classList.add("text-center");
             processingTr.appendChild(processingNumberTd);
 
-            processingNameTd.textContent = doc.data().processingName;
-            processingTr.appendChild(processingNameTd);
-
-            switchTd.textContent = doc.data().switch;
-            processingTr.appendChild(switchTd);
-
             switch (doc.data().processingType) {
               case "post":
                 processingType.textContent = "投稿";
@@ -55,6 +49,12 @@ monitorLoginStatus()
                 break;
             }
             processingTr.appendChild(processingType);
+
+            processingNameTd.textContent = doc.data().processingName;
+            processingTr.appendChild(processingNameTd);
+
+            switchTd.textContent = doc.data().switch;
+            processingTr.appendChild(switchTd);
 
             startTime.textContent = doc.data().startTime;
             processingTr.appendChild(startTime);
