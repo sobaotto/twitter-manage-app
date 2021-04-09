@@ -30,3 +30,5 @@
 
 - [ ] ディレクトリの階層はどこまでよいのか？2021/03/29
 - [ ] ローカルホストで、更新されない、改善策は？2021/03/29
+- [ ] material-uiを学べばCSSは基礎だけで良い？
+- [ ] [](https://ja.reactjs.org/tutorial/tutorial.html#prerequisites)

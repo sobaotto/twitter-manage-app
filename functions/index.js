@@ -13,7 +13,13 @@ exports.executionProcessings = functions
   .pubsub.schedule("*/5 * * * *")
   .timeZone("Asia/Tokyo")
   .onRun(() => {
-    executionProcessings();
+    executionProcessings()
+      .then((res) => {
+        return res;
+      })
+      .catch((error) => {
+        return error;
+      });
   });
 
 // exports.executionProcessings = functions

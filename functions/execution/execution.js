@@ -2,15 +2,12 @@
 
 const admin = require("firebase-admin");
 const reply = require("./request/reply");
-const replyPython = require("./request/replyPython");
 const post = require("./request/post");
 const favorite = require("./request/favorite");
-const getJapanTime = require("../otherFunctions/getJapanTime");
 const { FIRESTORE_COLLECTION_ITEMS } = require("../const/firestore-collection");
+const executionTimeJudge = require("../otherFunctions/executionTimeJudge");
 
 const execution = async (twitterApiKey, processing, uid) => {
-  const japanTime = getJapanTime();
-
   // 処理情報取得
   const startTime = processing["startTime"];
   const processingType = processing["processingType"];
@@ -35,18 +32,27 @@ const execution = async (twitterApiKey, processing, uid) => {
     return;
   }
 
+  const executionJudgeResult = executionTimeJudge(startTime);
+
   switch (processingType) {
     case "post":
-      if (startTime === japanTime) {
+      console.log("投稿分岐");
+
+      if (executionJudgeResult) {
+        console.log("投稿の中入った");
+
         post(twitterApiKey, postContent);
       }
       break;
 
     case "favorite":
-      if (startTime === japanTime) {
+      console.log("ファボ分岐");
+
+      if (executionJudgeResult) {
         executionCounter = 0;
       }
       if (maxCount > executionCounter) {
+        console.log("ファヴォの中入った");
         favorite(twitterApiKey, searchWord, executionCounter)
           .then(async () => {
             executionCounter++;
@@ -64,7 +70,7 @@ const execution = async (twitterApiKey, processing, uid) => {
       break;
 
     case "reply":
-      if (startTime === japanTime) {
+      if (executionJudgeResult) {
         executionCounter = 0;
       }
       if (maxCount > executionCounter) {
