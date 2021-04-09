@@ -59,9 +59,16 @@ const execution = async (twitterApiKey, processing, uid) => {
 
             console.log("fav分岐の中", executionCounter);
 
-            await processingRef.update({
-              executionCounter: executionCounter,
-            });
+            await processingRef
+              .update({
+                executionCounter: executionCounter,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
           })
           .catch((error) => {
             console.error(error);
@@ -81,9 +88,16 @@ const execution = async (twitterApiKey, processing, uid) => {
 
             console.log("リプライ分岐の中", executionCounter);
 
-            await processingRef.update({
-              executionCounter: executionCounter,
-            });
+            await processingRef
+              .update({
+                executionCounter: executionCounter,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
           })
           .catch((error) => {
             console.error(error);
