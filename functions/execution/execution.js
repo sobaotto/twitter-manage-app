@@ -36,28 +36,20 @@ const execution = async (twitterApiKey, processing, uid) => {
 
   switch (processingType) {
     case "post":
-      console.log("投稿分岐");
-
       if (executionJudgeResult) {
-        console.log("投稿の中入った");
-
         post(twitterApiKey, postContent);
       }
       break;
 
     case "favorite":
-      console.log("ファボ分岐");
-
       if (executionJudgeResult) {
         executionCounter = 0;
       }
       if (maxCount > executionCounter) {
         console.log("ファヴォの中入った");
-        favorite(twitterApiKey, searchWord, executionCounter)
+        favorite(twitterApiKey, searchWord)
           .then(async () => {
             executionCounter++;
-
-            console.log("fav分岐の中", executionCounter);
 
             await processingRef
               .update({
@@ -81,12 +73,9 @@ const execution = async (twitterApiKey, processing, uid) => {
         executionCounter = 0;
       }
       if (maxCount > executionCounter) {
-        // await replyPython(twitterApiKey, searchWord, postContent);
         reply(twitterApiKey, searchWord, postContent)
           .then(async (res) => {
             executionCounter++;
-
-            console.log("リプライ分岐の中", executionCounter);
 
             await processingRef
               .update({

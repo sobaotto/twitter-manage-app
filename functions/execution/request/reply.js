@@ -12,15 +12,9 @@ const reply = (twitterApiKey, searchWord, postContent) => {
     await client
       .get("search/tweets", params)
       .then(async (tweets) => {
-        console.log(
-          "----------------------------新しいリプライ---------------------------"
-        );
         if (tweets.statuses[0].retweeted_status !== undefined) {
-          console.log("リツイートだった");
           return;
         } else {
-          console.log("リツイートじゃなかったからリプライするよ！！");
-
           const screenName = tweets.statuses[0].user.screen_name;
           const tweetId = tweets.statuses[0].id_str;
 
@@ -36,13 +30,11 @@ const reply = (twitterApiKey, searchWord, postContent) => {
               resolve(reply);
             })
             .catch((error) => {
-              console.log("リプライ実行のエラー");
               reject(error);
             });
         }
       })
       .catch((error) => {
-        console.log("ツイート検索のエラー");
         reject(error);
       });
   });

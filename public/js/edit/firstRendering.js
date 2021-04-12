@@ -10,8 +10,6 @@ const firstRendering = (editItems) => {
     (processingData) => processingData.processingName === editingProcessingName
   );
 
-  console.log("fasdfasdfasdfa", processingData);
-
   const processingName = document.getElementById("processingName");
   const startTime = document.getElementById("startTime");
   const searchWord = document.getElementById("searchWord");

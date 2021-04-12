@@ -13,8 +13,6 @@ const executionProcessings = async () => {
     const screenName = userData["userInfo"]["screenName"];
     const uid = userData["userInfo"]["uid"];
 
-    console.log("screen_name : ", screenName);
-
     const twitterApiKey = {
       ...authKeys,
       access_token_key: accessTokenKey,
@@ -32,9 +30,5 @@ const executionProcessings = async () => {
     }
   }
 };
-
-// (async () => {
-//   await executionProcessings();
-// })();
 
 module.exports = executionProcessings;
