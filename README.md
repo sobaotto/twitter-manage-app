@@ -1,20 +1,9 @@
-## TODO
-
-### 追加機能
-
-- [x] フロントエンド（非同期を勉強して完成させる）【2021/03/22】
-- [x] 予約投稿機能【2021/03/23】
-- [x] Authentication
-- [x] twitterAPI（oAuth）
-- [ ] ユーザー分の予約投稿（テスト実行関数も）
-- [ ] ログアウトボタンの実装
-
-- [ ] 自動いいね機能
-- [ ] 自動リプライ機能
-- [ ] web ページの見栄え
-
-### 調べること
-
-- [x] gitignoreの書き方理解
-- [ ] ESLint導入（prettierと併用の設定）
-- [x] jsファイルの隠し方
+# 使用技術
+項目|詳細
+-|-
+言語/ライブラリ|フロント  -  JavaScript, HTML, CSS
+　　　　　　　　|バック　 -  Node.js
+データベース|Firestore
+デプロイ先|Firebase Hosting
+その他|Firebase Authentication, Cloud Functions
+formatter|Prettier
